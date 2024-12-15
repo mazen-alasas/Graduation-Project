@@ -1,7 +1,9 @@
+
+
 #ifndef STRING_H_
 #define STRING_H_
 
-#include "StdTypes.h"
+#include "../../StdTypes.h"
 
 void Remove_string(c8*str);
 u8 string_length(c8 *str);

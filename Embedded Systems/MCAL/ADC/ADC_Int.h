@@ -1,10 +1,9 @@
 
-
-
 #ifndef ADC_INT_H_
 #define ADC_INT_H_
 
-
+#define ADC_PRESCALER_CLR_MASK        0xf8
+#define ADC_CHANNEL_CLR_MASK          0xE0
 
 
 typedef enum{

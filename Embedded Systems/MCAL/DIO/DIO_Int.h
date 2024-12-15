@@ -3,8 +3,8 @@
 #ifndef DIO_INT_H_
 #define DIO_INT_H_
 
-#include "MemMap.h"
-#include "StdTypes.h"
+#include "../MemMap.h"
+#include "../StdTypes.h"
 
 
 

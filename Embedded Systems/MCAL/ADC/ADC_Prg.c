@@ -1,16 +1,12 @@
-#include "StdTypes.h"
-#include "MemMap.h"
+#include "../StdTypes.h"
+#include "../MemMap.h"
 #include "ADC_Int.h"
 #include "ADC_Cfg.h"
-
-
-
 
 #define  F_CPU   8000000
 #include <util/delay.h>
 
 u8 ConversionFlag=0;
-
 
 void ADC_Init(void)
 {
@@ -32,7 +28,7 @@ void ADC_Init(void)
 	}
 	
 	/*prescaler*/
-	ADCSRA=ADCSRA & 0xf8;//0b11111000
+	ADCSRA=ADCSRA & ADC_PRESCALER_CLR_MASK;//0b11111000
 	ADCSRA=ADCSRA | (Scaler);
 	/*pins*/
 	/*enable ADC*/
@@ -44,7 +40,7 @@ u16 ADC_Read(ADC_Channel_t ch)
 {
 	u16 adc;
 	/*select channel*/
-	ADMUX=ADMUX & 0xe0;
+	ADMUX=ADMUX & ADC_CHANNEL_CLR_MASK;
 	ADMUX=ADMUX | ch;
 
 	/*start conversion*/
@@ -66,7 +62,7 @@ void ADC_StartConversion(ADC_Channel_t ch)
 	if(ConversionFlag==0)
 	{
 		/*select channel*/
-		ADMUX=ADMUX & 0xE0; // 0b11100000
+		ADMUX=ADMUX & ADC_CHANNEL_CLR_MASK; // 0b11100000
 		ADMUX=ADMUX | ch;
 
 		/*start conversion*/

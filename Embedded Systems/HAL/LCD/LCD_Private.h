@@ -1,14 +1,16 @@
 
+
+
 #ifndef LCD_PRIVATE_H_
 #define LCD_PRIVATE_H_
 
-#include "StdTypes.h"
-#include "String.h"
+#include "../../StdTypes.h"
+#include "../../MCAL/String/String.h"
 
-#define  D7 PINA6
-#define  D6 PINA5
-#define  D5 PINA4
-#define  D4 PINA3
+#define  D7 PINC5
+#define  D6 PINC4
+#define  D5 PINC3
+#define  D4 PINC2
 
 #define _4_BIT  1
 #define _8_BIT  2

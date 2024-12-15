@@ -1,4 +1,6 @@
-#include "StdTypes.h"
+
+
+#include "../../StdTypes.h"
 
 
 void Remove_string(c8*str)

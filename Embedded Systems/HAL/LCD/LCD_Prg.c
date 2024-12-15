@@ -1,10 +1,11 @@
 
+
 #define  F_CPU   8000000
 #include <util/delay.h>
-#include "StdTypes.h"
+#include "../../StdTypes.h"
 
-#include "DIO_Int.h"
-#include "String.h"
+#include "../../MCAL/DIO/DIO_Int.h"
+#include "../../MCAL/String/String.h"
 #include "LCD_Int.h"
 #include "LCD_Cfg.h"
 #include "LCD_Private.h"

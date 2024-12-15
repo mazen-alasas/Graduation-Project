@@ -1,7 +1,7 @@
 
 
-#include "MemMap.h"
-#include "StdTypes.h"
+#include "../MemMap.h"
+#include "../StdTypes.h"
 #include "DIO_Int.h"
 #include "DIO_Private.h"
 
@@ -223,4 +223,4 @@ void DIO_Init(void)
 	{
 		DIO_InitPin(i,PinStatusArr[i]);
 	}
-} 
+}

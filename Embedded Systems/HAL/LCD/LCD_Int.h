@@ -2,6 +2,7 @@
 #ifndef LCD_INT_H_
 #define LCD_INT_H_
 
+
 #define _LCD_CLEAR                      0x01
 #define _LCD_RETURN_HOME                0x02
 #define _LCD_ENTRY_MODE                 0x06

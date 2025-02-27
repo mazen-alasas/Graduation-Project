@@ -1,75 +1,102 @@
 
 #include "MPU_Int.h"
 #include <util/delay.h>
+
 u8 arr[14];
-f32 ACCX, ACCY, ACCZ, T, GYX, GYY, GYZ;
+s16 ACCX, ACCY, ACCZ, T, GYX, GYY, GYZ;
 f32 AX, AY, AZ, TEM, GY, GX, GZ;
 
-//simple write operation to MPU6050
-void MPU_write(u8 dev_addr, u8 reg, u8 instr)
+void MPU_Init(void)
 {
-	start();
-	send(MPU60X0_W);
-	send(reg);
-	send(instr);
-	stop();
+	TWI_start();
+	TWI_writeByte(MPU60X0_W);
+	TWI_writeByte(PWR_1);
+	TWI_writeByte(0x00);  
+	TWI_stop();
+	_delay_ms(100);  
+
+	MPU_Write(MPU60X0_W, ACC_CONFIG, 0x00);
+
+	MPU_Write(MPU60X0_W, GYRO_CONFIG, 0x00);
 }
-//reads the device id 0x68 from the who_am_i register of MPU6050
-void deviceid()
+void MPU_Write(u8 dev_addr, u8 reg, u8 instr)
 {
-	u8 id;
-	start();
-	send(MPU60X0_W);
-	send(WHO_AM_I);
-	start();
-	send(MPU60X0_R);
-	id = Nack();
-	stop();
-	if(id == 0x68)
+	TWI_start();
+	TWI_writeByte(dev_addr);
+	TWI_writeByte(reg);
+	TWI_writeByte(instr);
+	TWI_stop();
+}
+u8 MPU6050_TestConnection(void) {
+	TWI_start();
+	TWI_writeByte((MPU60X0_W));
+	if (TWI_getStatus() != TWI_MT_SLA_W_ACK) { // SLA+W ACK
+		TWI_stop();
+		return 0; 
+	}
+	TWI_stop();
+	return 1; 
+}
+void MPU_Readall()
+{
+	TWI_start();
+	TWI_writeByte(MPU60X0_W);
+	TWI_writeByte(MPU6050_ACCX);
+	_delay_us(10);
+	TWI_start();
+	TWI_writeByte(MPU60X0_R);
+	
+	for (u8 i = 0; i < 13; i++)
 	{
-		// Connected to MPU6050 with device
+		arr[i] = TWI_readByteWithACK();
 	}
-	else{
-		// Unknown device
-	}
+	arr[13] = TWI_readByteWithNACK();
+	TWI_stop();
+	
+	_delay_ms(5);
+	
+	ACCX = (s16)((arr[0] << 8) | arr[1]);
+	ACCY = (s16)((arr[2] << 8) | arr[3]);
+	ACCZ = (s16)((arr[4] << 8) | arr[5]);
+	T = (s16)((arr[6] << 8) | arr[7]);
+	GYX = (s16)((arr[8] << 8) | arr[9]);
+	GYY = (s16)((arr[10] << 8) | arr[11]);
+	GYZ = (s16)((arr[12] << 8) | arr[13]);
 }
-//reads 7bytes of data starting from address 0x3B
-//data is stored in a buffer for conversion
-void MPU_readall()
+void MPU_Conv(void)
 {
-	u16 data;
-	start();
-	send(MPU60X0_W);
-	send(MPU6050_accx);
-	_delay_ms(500);
-	start();
-	send(MPU60X0_R);
-	
-	for(u8 i = 0; i < 13; i++)
-	{
-		arr[i] = Ack();
-	}
-	arr[13] =Nack();
-	stop();
-	
-	ACCX = ((arr[0] << 8) | arr[1]);
-	ACCY = ((arr[2] << 8) | arr[3]);
-	ACCZ = ((arr[4] << 8) | arr[5]);
-	T = ((arr[6] << 8) | arr[7]);
-	GYX = ((arr[8] << 8) | arr[9]);
-	GYY = ((arr[10] << 8) | arr[11]);
-	GYZ = ((arr[12] << 8) | arr[13]);
-	
+	MPU_Readall();
+	AX = (ACCX / 16384.0) * 9.81;
+	AY = (ACCY / 16384.0) * 9.81;
+	AZ = (ACCZ / 16384.0) * 9.81;
+	TEM = (T / 340.0) + 36.53;
+	GX = GYX / 131.0;
+	GY = GYY / 131.0;
+	GZ = GYZ / 131.0;
 }
-//MPU6050 raw data conversion
-void MPU_conv(void)
-{
-	MPU_readall();
-	AX = ACCX / 4096;               //raw accel / accel sensitivity ->>acceleration in g
-	AY = ACCY /4096;
-	AZ = ACCZ / 4096;
-	TEM = T /340 +36.53;             //celcius conversion
-	GX = GYX / 65.5;
-	GY = GYY / 65.5;                  //convert raw gyro data to degree/seconds
-	GZ = GYZ / 65.5;
+void MPU6050_EnableBypassMode() {
+	TWI_start();
+	TWI_writeByte((MPU6050_ADDRESS << 1) | 0);
+	TWI_writeByte(USER_CTRL);
+	TWI_writeByte(0x00);
+	TWI_stop();
+	_delay_ms(10);
+	
+	TWI_start();
+	TWI_writeByte((MPU6050_ADDRESS << 1) | 0);
+	TWI_writeByte(INT_PIN_CFG);
+	TWI_writeByte(0x02);
+	TWI_stop();
+	
+	TWI_start();
+	TWI_writeByte((MPU6050_ADDRESS << 1) | 0);
+	TWI_writeByte(PWR_1);
+	TWI_writeByte(0x00);
+	TWI_stop();
+	_delay_ms(10);
 }
+
+
+
+
+

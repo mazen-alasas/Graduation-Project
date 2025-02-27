@@ -1,41 +1,49 @@
 
 #include "I2C_Int.h"
+void TWI_init(void)
+{
+    TWBR = 0x32;
+	TWSR = 0x00;	
+    TWCR = (1<<TWEN); 
+}
 
-void i2c_init(void)
+void TWI_start(void)
 {
-	TWBR = 32;                    
-	TWCR |= (1 << TWEN);   // activation I2C      
+    TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN);
+    while (!GET_BIT(TWCR, TWINT));
+
 }
-void wait(void)
+
+void TWI_stop(void)
 {
-	while(!( TWCR & (1 << TWINT)));    
-	
+    TWCR = (1 << TWINT) | (1 << TWSTO) | (1 << TWEN);
 }
-void start(void)
+
+void TWI_writeByte(u8 data)
 {
-	TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWSTA);  
-	wait();
+    TWDR = data;
+    TWCR = (1 << TWINT) | (1 << TWEN);
+    while (!GET_BIT(TWCR, TWINT));
+
 }
-void stop()
+
+u8 TWI_readByteWithACK(void)
 {
-	TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWSTO);
-	
+    TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWEA);
+    while (!GET_BIT(TWCR, TWINT));
+    return TWDR;
 }
-u8 Ack(void)                       
+
+u8 TWI_readByteWithNACK(void)
 {
-	TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWEA);
-	wait();
-	return TWDR;
+    TWCR = (1 << TWINT) | (1 << TWEN);
+    while (!GET_BIT(TWCR, TWINT));
+    return TWDR;
 }
-u8 Nack(void)          
+
+u8 TWI_getStatus(void)
 {
-	TWCR = (1 << TWINT) | (1 << TWEN);
-	wait();
-	return TWDR;
-}
-void send(u8 data)
-{
-	TWDR = data;
-	TWCR = (1 << TWINT) | (1 << TWEN);  
-	wait();
+    u8 status;
+    status = TWSR & 0xF8;
+    return status;
 }

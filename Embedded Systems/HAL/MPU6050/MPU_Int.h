@@ -26,5 +26,4 @@ void MPU_Readall();
 void MPU_Conv();
 void MPU6050_EnableBypassMode();
 
-
 #endif /* MPU_INT_H */

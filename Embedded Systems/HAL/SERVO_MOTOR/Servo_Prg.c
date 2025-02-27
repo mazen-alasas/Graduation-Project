@@ -18,7 +18,6 @@ void Servo_SetAngle(u8 angle) {
 	if (angle > 180) {
 		angle = 180;  // Limit angle to max 180 degrees
 	}
-
 	// Map angle (0-180) to pulse width (1000-2000 ticks)
 	u16 pulse_width = SERVO_MIN_PULSE + ((u32)(SERVO_MAX_PULSE - SERVO_MIN_PULSE) * angle) / 180;
 	TIMER1_OCRA_set(pulse_width);

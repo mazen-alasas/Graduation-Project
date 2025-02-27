@@ -10,5 +10,4 @@
 
 void Servo_Init(void) ;
 void Servo_SetAngle(u8 angle) ;
-
 #endif /* SERVO_H_ */

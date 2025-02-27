@@ -98,5 +98,3 @@ void MPU6050_EnableBypassMode() {
 
 
 
-
-

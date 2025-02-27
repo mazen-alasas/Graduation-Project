@@ -44,4 +44,3 @@ f32 QMC5883L_CalculateHeading(QMC5883L_Data_t *data) {
 	if (heading < 0) heading += 360.0;
 	return heading;
 }
-

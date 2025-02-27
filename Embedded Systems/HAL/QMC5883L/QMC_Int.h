@@ -41,6 +41,4 @@ u8 QMC5883L_TestConnection(void);
 void QMC5883L_Read(QMC5883L_Data_t *data);
 f32 QMC5883L_CalculateHeading(QMC5883L_Data_t *data);
 
-
-
 #endif /* QMC_INT_H */

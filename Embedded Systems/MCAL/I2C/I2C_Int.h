@@ -20,6 +20,4 @@ u8 TWI_readByteWithACK(void);
 u8 TWI_readByteWithNACK(void);
 u8 TWI_getStatus(void);
 
-
-
 #endif /* I2C_INT_H */

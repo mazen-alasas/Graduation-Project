@@ -12,6 +12,7 @@ typedef signed short    s16;
 typedef unsigned long   u32;
 typedef signed long     s32;
 
+typedef float           f32;
 typedef double          f64;
 
 #define  Max_u8  255

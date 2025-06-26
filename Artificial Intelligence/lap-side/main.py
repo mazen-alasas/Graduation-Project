@@ -1,55 +1,55 @@
+import socket
 from src.drv_face_rec.face_recognition_module import FaceRecognition
-from src.utils.helper import play_alarm_sound
+from src.drv_mon_sys.driver_monitoring_module import DriverMonitor
+from src.utils.helper import *
+from src.utils.firebase_conn import update_feature_state ,send_message
 
-DFR = FaceRecognition()
-DFR.load_users_data()
-DFR.run()
+#############################################
+# Constants for socket connection
+HOST = 'raspberrypi.local'
+PORT = 1234
 
-same_person: bool = DFR.is_verified()
-print(same_person)
-# if not same_person:
-#     play_alarm_sound()          # play alarm sound
+# Constants for message types
+STOP:    int = 0
+PLAY:    int = 1
+AWAKE:   int = 3
+WARN:    int = 4  # sleeping or dead
+NO_FACE: int = 5
+FINISH:  int = 6
+
+#############################################
+client_socket = socket.socket()
+# client_socket.connect((HOST, PORT))
+
+#############################################
+
+dfr = FaceRecognition()
+update_feature_state("DFR", "ON", "Face Recognition Started")
+dfr.load_users_data()
+dfr.run()
+update_feature_state("DFR", "OFF", "Face Recognition Stopped")
 
 
+if dfr.is_verified():
+    # client_socket.send(str(PLAY).encode())
+    send_message("Driver verified successfully.")
 
+    dms = DriverMonitor(client_socket)
 
+    update_feature_state("DMS", "ON", "Monitoring started...")
+    print("✅ Authorized driver detected. Starting DMS...")
+    update_feature_state("TSR", "ON", "Traffic Sign Recognition started...")
 
-# send same_person value to FireBase (asmaa)
+    dms.run()   # while loop for monitoring driver state until stopped by (sleep or dead)
+    update_feature_state("DMS", "OFF", "Monitoring stopped.")
+    update_feature_state("TSR", "OFF", "Traffic Sign Recognition started...")
 
-# name of image
-# name = os.path.splitext(os.path.basename(r"G:\Sub Projects For GP\AI\Mazen Ahmed.jpg"))[0]
-# print(name) 
+else:
+    send_message("Unauthorized driver detected.")
+    # client_socket.send(str(STOP).encode())
+    print("🚫 Unauthorized driver.")
 
-"""
-DMS = DriverMonitor()
-DMS.run()
-"""
+print("🛑 Program terminated.")
 
-
-# cap = cv2.VideoCapture(0)
-# while cap.isOpened():
-#     success, frame = cap.read()
-
-#     if not success:
-#         print("Error reading frame.")
-#         break
-    
-#     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-#     faces = DMS.detector(gray)
-
-#     if len(faces) == 0:
-#         DMS._handle_no_face_detected()
-#     else:
-#         DMS.no_face_start_time = None
-#         DMS._handle_faces_detected(faces, gray, frame)
-
-#     if DMS.message_text and time.time() - DMS.message_time <= DMS.MESSAGE_DISPLAY_DURATION:
-#         cv2.putText(frame, DMS.message_text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-
-#     cv2.imshow("Driver Status", frame)
-
-#     if cv2.waitKey(1) & 0xFF == ord('q'):
-#         break
-
-# cap.release()
-# cv2.destroyAllWindows()
+# client_socket.send(str(FINISH).encode())
+client_socket.close()

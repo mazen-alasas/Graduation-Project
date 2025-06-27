@@ -9,23 +9,23 @@ The AI module includes the following core features:
 ### 1. Driver Face Recognition (DFR)
 A facial recognition system that ensures only authorized individuals can operate the vehicle. It scans the driver’s face and compares it with registered profiles. If an unrecognized face is detected, the system takes action to prevent unauthorized access.
 
-- ✅ Chosen Method: `face_recognition library` (with OpenCV)
-- 🧠 Alternative methods explored: YOLO + face_recognition, DeepFace, CNN
-- 📌 Reason for choice: Real-time speed, ease of use, requires only one image per person
+-  Chosen Method: `face_recognition library` (with OpenCV)
+-  Alternative methods explored: YOLO + face_recognition, DeepFace, CNN
+-  Reason for choice: Real-time speed, ease of use, requires only one image per person
 
 ### 2. Driver Monitoring System (DMS)
 This system monitors the driver's attentiveness and fatigue level by analyzing facial landmarks and eye movements. It classifies the driver's state (alert, distracted, drowsy) and can trigger alerts to avoid accidents.
 
-- ✅ Chosen Method: Facial Landmark Detection + EAR (Eye Aspect Ratio) using Dlib
-- 🧠 Other explored methods: Biometric Signals, CNN, YOLO, Speech Recognition
-- 📌 Key Metrics: Eye blink rate, head position, drowsiness detection
+-  Chosen Method: Facial Landmark Detection + EAR (Eye Aspect Ratio) using Dlib
+-  Other explored methods: Biometric Signals, CNN, YOLO, Speech Recognition
+-  Key Metrics: Eye blink rate, head position, drowsiness detection
 
 ### 3. Traffic Sign Recognition (TSR)
 An intelligent vision system that detects and classifies road signs (e.g., speed limits, stop signs) in real-time, helping the driver follow traffic rules even under poor visibility or distraction.
 
-- ✅ Chosen Method: `YOLO` Object Detection
-- 📊 Dataset used: GTSRB (German Traffic Sign Recognition Benchmark)
-- 📌 Output: Real-time recognition of signs with bounding boxes and labels
+-  Chosen Method: `YOLO` Object Detection
+-  Dataset used: GTSRB (German Traffic Sign Recognition Benchmark)
+-  Output: Real-time recognition of signs with bounding boxes and labels
 
 ---
 
@@ -34,16 +34,15 @@ An intelligent vision system that detects and classifies road signs (e.g., speed
 - **Computer Vision**: OpenCV
 - **Deep Learning**: TensorFlow, PyTorch, face_recognition, YOLO
 - **Libraries**: Dlib, NumPy, Matplotlib, Scikit-learn
-- **Models**: CNNs, YOLO, Pre-trained face models (e.g., VGGFace, ArcFace)
+- **Models**: CNNs, YOLO, Pre-trained face models
 
 ---
 
 ## 📸 System Demo / Visuals
 
-> Add screenshots or diagrams here, e.g.:
-![DFR Authorized](dfr.png)
-![DMS Sleep Detection](dms.png)
-![TSR Sample]("C:\Users\Home\Downloads\Telegram Desktop\photo_2025-06-27_22-25-22.jpg")
+![DFR Authorized](images/driver_authorized.png)
+![DMS Sleep Detection](images/dms_sleep.png)
+![TSR Sample](images/tsr_sign_detected.png)
 
 ---
 

@@ -31,7 +31,7 @@ An intelligent vision system that detects and classifies road signs (e.g., speed
 
 ## 🧠 Technologies Used
 
-- **Computer Vision**: OpenCV, MediaPipe
+- **Computer Vision**: OpenCV
 - **Deep Learning**: TensorFlow, PyTorch, face_recognition, YOLO
 - **Libraries**: Dlib, NumPy, Matplotlib, Scikit-learn
 - **Models**: CNNs, YOLO, Pre-trained face models (e.g., VGGFace, ArcFace)
@@ -41,9 +41,9 @@ An intelligent vision system that detects and classifies road signs (e.g., speed
 ## 📸 System Demo / Visuals
 
 > Add screenshots or diagrams here, e.g.:
-![DFR Authorized](images/driver_authorized.png)
-![DMS Sleep Detection](images/dms_sleep.png)
-![TSR Sample](images/tsr_sign_detected.png)
+![DFR Authorized](dfr.png)
+![DMS Sleep Detection](dms.png)
+![TSR Sample]("C:\Users\Home\Downloads\Telegram Desktop\photo_2025-06-27_22-25-22.jpg")
 
 ---
 

@@ -1,8 +1,7 @@
 import socket
-from src.drv_face_rec.face_recognition_module import FaceRecognition
-from src.drv_mon_sys.driver_monitoring_module import DriverMonitor
-from src.utils.helper import *
-from src.utils.firebase_conn import update_feature_state ,send_message
+from face_recognition_module import FaceRecognition
+from driver_monitoring_module import DriverMonitor
+from firebase_conn import update_feature_state ,send_message
 
 #############################################
 # Constants for socket connection
@@ -19,7 +18,7 @@ FINISH:  int = 6
 
 #############################################
 client_socket = socket.socket()
-# client_socket.connect((HOST, PORT))
+client_socket.connect((HOST, PORT))
 
 #############################################
 
@@ -31,25 +30,19 @@ update_feature_state("DFR", "OFF", "Face Recognition Stopped")
 
 
 if dfr.is_verified():
-    # client_socket.send(str(PLAY).encode())
+    client_socket.send(str(PLAY).encode())
     send_message("Driver verified successfully.")
 
     dms = DriverMonitor(client_socket)
-
     update_feature_state("DMS", "ON", "Monitoring started...")
-    print("✅ Authorized driver detected. Starting DMS...")
-    update_feature_state("TSR", "ON", "Traffic Sign Recognition started...")
-
     dms.run()   # while loop for monitoring driver state until stopped by (sleep or dead)
     update_feature_state("DMS", "OFF", "Monitoring stopped.")
     update_feature_state("TSR", "OFF", "Traffic Sign Recognition started...")
 
 else:
     send_message("Unauthorized driver detected.")
-    # client_socket.send(str(STOP).encode())
-    print("🚫 Unauthorized driver.")
+    client_socket.send(str(STOP).encode())
 
 print("🛑 Program terminated.")
 
-# client_socket.send(str(FINISH).encode())
 client_socket.close()

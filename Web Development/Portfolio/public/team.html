@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaneLoons Team</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #008b77;
+      --secondary-color: #00b4a0;
+      --accent-color: #ff6b6b;
+      --dark-color: #2c3e50;
+      --light-color: #f8f9fa;
+      --text-color: #333;
+    }
+
+    .team {
+      padding: 60px 15px;
+      background-color: var(--light-color);
+      text-align: center;
+    }
+
+    .team-heading {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 12px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .team-heading:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -8px;
+      width: 60px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    .team-subheading {
+      font-size: 1rem;
+      color: var(--dark-color);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-card:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #008b77, #00b4a0);
+    }
+
+    .team-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(0, 180, 160, 0.1);
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .team-card:hover .team-photo {
+      border-color: rgba(0, 180, 160, 0.3);
+      transform: scale(1.05);
+    }
+
+    .team-card h3 {
+      font-size: 1.1rem;
+      color: var(--dark-color);
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .team-role {
+      color: var(--primary-color);
+      font-weight: 500;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .team-role:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -6px;
+      width: 30px;
+      height: 2px;
+      background-color: var(--secondary-color);
+    }
+
+    .team-description {
+      color: var(--text-color);
+      font-size: 0.8rem;
+      margin-bottom: 15px;
+      min-height: 40px;
+      line-height: 1.5;
+    }
+
+    .social-icon {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .social-icon a {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 180, 160, 0.1);
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .social-icon a:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .social-icon img {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .team-card {
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .team-card:nth-child(1) { animation-delay: 0.1s; }
+    .team-card:nth-child(2) { animation-delay: 0.2s; }
+    .team-card:nth-child(3) { animation-delay: 0.3s; }
+    .team-card:nth-child(4) { animation-delay: 0.4s; }
+    .team-card:nth-child(5) { animation-delay: 0.5s; }
+    .team-card:nth-child(6) { animation-delay: 0.6s; }
+    .team-card:nth-child(7) { animation-delay: 0.7s; }
+    .team-card:nth-child(8) { animation-delay: 0.8s; }
+    .team-card:nth-child(9) { animation-delay: 0.9s; }
+    .team-card:nth-child(10) { animation-delay: 1.0s; }
+    .team-card:nth-child(11) { animation-delay: 1.1s; }
+    .team-card:nth-child(12) { animation-delay: 1.2s; }
+    .team-card:nth-child(13) { animation-delay: 1.3s; }
+    .team-card:nth-child(14) { animation-delay: 1.4s; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .team-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+      
+      .team {
+        padding: 40px 10px;
+      }
+      
+      .team-heading {
+        font-size: 1.6rem;
+      }
+      
+      .team-subheading {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+        padding: 0 10px;
+      }
+      
+      .team-photo {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .team-card h3 {
+        font-size: 1rem;
+      }
+      
+      .team-role {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .team-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      
+      .team-card {
+        padding: 15px 10px;
+      }
+      
+      .team-photo {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="team" id="team">
+    <h2 class="team-heading">TEAM</h2>
+    <p class="team-subheading">Meet the team driving innovation and excellence at LaneLoons</p>
+
+    <div class="team-container">
+      <!-- Member 1 -->
+      <div class="team-card">
+        <img src="/team/ahmedismail.webp" alt="Ahmed Ismail" class="team-photo">
+        <h3>Ahmed Ismail</h3>
+        <p class="team-role">Embedded Software</p>
+        <p class="team-description">Low-level programming expert</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://linkedin.com" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="team-card">
+        <img src="/team/mazen.png" alt="Mazen Ahmed" class="team-photo">
+        <h3>Mazen Ahmed</h3>
+        <p class="team-role">AI Engineer</p>
+        <p class="team-description">ML models specialist</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://www.facebook.com/share/14fWyXkdC7/" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/in/ahmed-ismail-a03185255" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 3 -->
+      <div class="team-card">
+        <img src="/team/nader.webp" alt="Ahmed Nader" class="team-photo">
+        <h3>Ahmed Nader</h3>
+        <p class="team-role">Web Developer</p>
+        <p class="team-description">UI/UX specialist</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://linkedin.com" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 4 -->
+      <div class="team-card">
+        <img src="/team/zeyad.webp" alt="Zeyad Mohamed" class="team-photo">
+        <h3>Zeyad Mohamed</h3>
+        <p class="team-role">Cyber Security</p>
+        <p class="team-description">Security protocols</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://www.facebook.com/share/151ENahEvM/" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/in/ziad-mohamed-759a73240" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 5 -->
+      <div class="team-card">
+        <img src="/team/yaser khairy.png" alt="Yaser Khairy" class="team-photo">
+        <h3>Yaser Khairy</h3>
+        <p class="team-role">Embedded Software</p>
+        <p class="team-description">Firmware developer</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://linkedin.com" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 6 -->
+      <div class="team-card">
+        <img src="/team/abrar.jpg" alt="Abrar Twakal" class="team-photo">
+        <h3>Abrar Twakal</h3>
+        <p class="team-role">Web Developer</p>
+        <p class="team-description">Frontend expert</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://www.facebook.com/abrar.twakal" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/in/abrar-tawakl-31054a2b4" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 7 -->
+      <div class="team-card">
+        <img src="/team/smaka.png" alt="Asmaa Mohamed" class="team-photo">
+        <h3>Asmaa Mohamed</h3>
+        <p class="team-role">AI Engineer</p>
+        <p class="team-description">Computer vision</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://www.facebook.com/share/1An6UdKyMZ/" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://eg.linkedin.com/in/asmaa-mohamed-06a917248" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 8 -->
+      <div class="team-card">
+        <img src="/team/doaa naser.png" alt="Doaa Naser" class="team-photo">
+        <h3>Doaa Naser</h3>
+        <p class="team-role">Embedded Software</p>
+        <p class="team-description">Real-time systems</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://web.facebook.com/do32.nasser" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/in/doaa-mosbah/" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 9 -->
+      <div class="team-card">
+        <img src="/team/naira.png" alt="Nauira Mamdoh" class="team-photo">
+        <h3>Nauira Mamdoh</h3>
+        <p class="team-role">AI Engineer</p>
+        <p class="team-description">Deep learning</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://linkedin.com" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 10 -->
+      <div class="team-card">
+        <img src="/team/mariam.png" alt="Mariam Ahmed" class="team-photo">
+        <h3>Mariam Ahmed</h3>
+        <p class="team-role">AI Engineer</p>
+        <p class="team-description">Neural networks</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://www.facebook.com/mariam.elyamany.942" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/in/mariam-elyamany-015910252" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 11 -->
+      <div class="team-card">
+        <img src="/team/esraa shtat.png" alt="Esraa Shtat" class="team-photo">
+        <h3>Esraa Shtat</h3>
+        <p class="team-role">Embedded Software</p>
+        <p class="team-description">V2V protocols</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://linkedin.com" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 12 -->
+      <div class="team-card">
+        <img src="/team/hager khaled.png" alt="Hager Khaled" class="team-photo">
+        <h3>Hager Khaled</h3>
+        <p class="team-role">AI Engineer</p>
+        <p class="team-description">Behavior analysis</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://linkedin.com" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 13 -->
+      <div class="team-card">
+        <img src="/team/Hager Eid.jpg" alt="Hagar Basher" class="team-photo">
+        <h3>Hagar Basher</h3>
+        <p class="team-role">Embedded Software</p>
+        <p class="team-description">Safety systems</p>
+        <div class="social-icon">
+          <a href="https://github.com/HGRBASHER" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://www.facebook.com/" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://www.linkedin.com/in/hagar-eid-4b0062219/" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+
+      <!-- Member 14 -->
+      <div class="team-card">
+        <img src="/team/salma hamada.png" alt="Salma Hamada" class="team-photo">
+        <h3>Salma Hamada</h3>
+        <p class="team-role">Embedded Software</p>
+        <p class="team-description">Sensor integration</p>
+        <div class="social-icon">
+          <a href="#" target="_blank">
+            <img src="bxl-github.svg" alt="GitHub">
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <img src="facebook-circle-logo-24.png" alt="Facebook">
+          </a>
+          <a href="https://linkedin.com" target="_blank">
+            <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

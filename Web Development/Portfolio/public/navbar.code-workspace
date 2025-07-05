@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "C:/navbar"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "codeben"
+	}
+}

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced ADAS Project Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <style>
+    :root {
+      --primary-color: #008b77;
+      --primary-light: #e0f2f1;
+      --secondary-color: #4db6ac;
+      --accent-color: #80cbc4;
+      --dark-color: #2c3e50;
+      --light-color: #f8f9fa;
+      --text-color: #333;
+      --bg-color: #f5f7fa;
+      --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: white;
+      color: var(--text-color);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* Floating particles background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background-color: var(--accent-color);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+      }
+    }
+
+    /* Breadcrumb with wave effect */
+    .breadcrumb {
+      padding: 20px 40px;
+      background-color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .breadcrumb::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23008b77'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23008b77'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%234db6ac'/%3E%3C/svg%3E");
+      background-size: cover;
+      z-index: 1;
+    }
+
+    .breadcrumb a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      position: relative;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    .breadcrumb a:hover {
+      color: white;
+      background-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .breadcrumb a i {
+      margin-right: 8px;
+    }
+
+    /* Hero section with animated gradient */
+    .container {
+      padding: 100px 40px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234db6ac' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.3;
+      z-index: -1;
+      animation: patternMove 60s linear infinite;
+    }
+
+    @keyframes patternMove {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 1000px 1000px;
+      }
+    }
+
+    .title {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .title:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 80px;
+      height: 4px;
+      background-color: white;
+      border-radius: 2px;
+      transform-origin: left;
+      animation: lineGrow 1s ease-out forwards;
+    }
+
+    @keyframes lineGrow {
+      from {
+        transform: scaleX(0);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0.9;
+      background-color: white;
+      color: black;
+      backdrop-filter: blur(5px);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* System Section with floating cards */
+    .system {
+      padding: 100px 40px;
+      background-color: white;
+      position: relative;
+    }
+
+    .system::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23008b77'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23008b77'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23f8f9fa'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .system h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .system h2:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -15px;
+      width: 100px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      animation: lineGrow 0.8s ease-out forwards;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 139, 119, 0.1);
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(0, 139, 119, 0.1);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 139, 119, 0.1), rgba(77, 182, 172, 0.1));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 139, 119, 0.2);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: all 0.5s ease;
+      
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card p {
+      padding: 25px;
+      font-weight: 600;
+      color: var(--dark-color);
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    .card p::after {
+      content: "";
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+
+      transition: width 0.3s ease;
+    }
+
+    .card:hover p::after {
+      width: 80px;
+    }
+
+    /* Features Section with parallax effect */
+    .features {
+      padding: 120px 40px;
+      background-color: var(--primary-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23008b77' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 80px;
+      position: relative;
+      color: var(--primary-color);
+      z-index: 1;
+    }
+
+    .features h2:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -15px;
+      width: 100px;
+      height: 3px;
+
+      animation: lineGrow 0.8s ease-out forwards;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      gap: 50px;
+      position: relative;
+      z-index: 1;
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 139, 119, 0.1);
+      transition: all 0.5s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 139, 119, 0.15);
+    }
+
+    .feature.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .feature img {
+      width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s ease;
+      object-fit: cover;
+      height: 300px;
+    }
+
+    .feature:hover img {
+      transform: scale(1.02) rotate(1deg);
+    }
+
+    .feature .text {
+      width: 55%;
+    }
+
+    .feature h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
+    }
+
+    .feature h3::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 50px;
+      height: 3px;
+
+      transition: width 0.3s ease;
+    }
+
+    .feature:hover h3::after {
+      width: 80px;
+    }
+
+    .feature p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      color: var(--dark-color);
+    }
+
+    /* Floating action button */
+    .fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 139, 119, 0.4);
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    .fab:hover {
+      transform: scale(1.1) rotate(90deg);
+      background-color: var(--secondary-color);
+    }
+
+    /* Footer with wave effect */
+    .footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 60px 30px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23ffffff'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23ffffff'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23ffffff'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .footer p {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+
+      .feature,
+      .feature.reverse {
+        flex-direction: column;
+      }
+
+      .feature img,
+      .feature .text {
+        width: 100%;
+      }
+
+      .feature img {
+        margin-bottom: 30px;
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 80px 20px;
+        padding-bottom: 100px;
+      }
+
+      .title {
+        font-size: 2.2rem;
+      }
+
+      .content p {
+        font-size: 1rem;
+      }
+
+      .system h2,
+      .features h2 {
+        font-size: 2rem;
+      }
+
+      .feature h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        padding: 20px;
+        margin-bottom: 50px;
+      }
+
+      .system,
+      .features {
+        padding: 60px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Floating particles background -->
+  <div class="particles" id="particles"></div>
+
+  <div class="breadcrumb">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a> / <a href="index.html">About</a>
+  </div>
+
+  <div class="container" id="content">
+    <h2 class="title" data-aos="fade-up">Project Objectives</h2>
+    <div class="content" data-aos="fade-up" data-aos-delay="200">
+      <p>The number of accidents has significantly increased due to driver distraction, fatigue, or boredom,
+        making driving more challenging. With the continuous efforts of the government and the Ministry of
+        Transportation to develop roads and bridges to reduce accidents, improve the driving experience, save
+        time, and shorten distances, we propose a project aimed at reducing risks, saving lives, and making
+        driving safer and more enjoyable for drivers.</p>
+    </div>
+  </div>
+
+  <main>
+    <section class="system">
+      <h2 data-aos="fade-up">The System Includes:</h2>
+      <div class="grid">
+        <div class="card" data-aos="fade-up">
+          <img src="dbwn.webp" alt="Do Not Pass Warning">
+          <p>Do Not Pass Warning System</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+          <img src="fcw.jpeg" alt="Forward Collision Warning">
+          <p>Forward Collision Warning System</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <img src="bsw.jpeg" alt="Blind Spot Warning">
+          <p>Blind Spot Warning System</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
+          <img src="eebl.jpg" alt="Emergency Brake Light">
+          <p>Emergency Electronic Brake Light System</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="400">
+          <img src="Ima.jpeg" alt="Intersection Movement Assist">
+          <p>Intersection Movement Assist</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="500">
+          <img src="dfm.jpeg" alt="driver monitoring System">
+          <p>Driver Monitoring System</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="600">
+          <img src="dfr.jpeg" alt="driver face Recognition">
+          <p>Driver Face Recognition</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="700">
+          <img src="tsr.jpeg" alt="driver face Recognition">
+          <p>Traffic Sign Recognition</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="800">
+          <img src="aps.jpeg" alt="driver face Recognition">
+          <p>Auto Parking System</p>
+        </div>
+      </div>
+      
+      </div>
+    </section>
+
+    
+  </main>
+
+  <!-- Floating action button -->
+  <div class="fab" id="fab" title="Back to Top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 ADAS Safety Project. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize AOS animation library
+      AOS.init({
+        duration: 800,
+        offset: 100,
+        easing: 'ease-in-out',
+        once: true
+      });
+
+      // Create floating particles
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        // Random size between 5px and 15px
+        const size = Math.random() * 10 + 5;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+
+        // Random animation duration and delay
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 10;
+        particle.style.animation = `float ${duration}s ${delay}s infinite linear`;
+
+        particlesContainer.appendChild(particle);
+      }
+
+      // Back to top button
+      const fab = document.getElementById('fab');
+      fab.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Show/hide fab based on scroll position
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          fab.style.opacity = '1';
+          fab.style.visibility = 'visible';
+        } else {
+          fab.style.opacity = '0';
+          fab.style.visibility = 'hidden';
+        }
+      });
+
+      // Initial hide of fab
+      fab.style.opacity = '0';
+      fab.style.visibility = 'hidden';
+    });
+  </script>
+</body>
+
+</html>

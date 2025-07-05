@@ -1,0 +1,320 @@
+
+
+
+* {
+
+    text-rendering: optimizeSpeed;
+
+
+    will-change: auto;
+}
+
+
+.reduced-animations * {
+    animation-duration: 0.1s !important;
+    transition-duration: 0.1s !important;
+}
+
+.reduced-animations .fade,
+.reduced-animations .slide,
+.reduced-animations .zoom {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* وضع الأداء العالي */
+.performance-mode {
+    /* إيقاف التأثيرات المعقدة */
+}
+
+.performance-mode .shadow,
+.performance-mode .blur,
+.performance-mode .gradient {
+    box-shadow: none !important;
+    filter: none !important;
+    background: solid !important;
+}
+
+.performance-mode .card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+
+#car-container {
+    /* تحسين العرض */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    /* تحسين الذاكرة */
+    contain: layout style paint;
+}
+
+#car-container canvas {
+    /* تحسين العرض */
+    image-rendering: optimizeSpeed;
+    image-rendering: -webkit-optimize-contrast;
+
+
+    max-width: 100%;
+    height: auto;
+}
+
+
+#speedometer-canvas {
+    /* تحسين العرض */
+    image-rendering: optimizeSpeed;
+
+    /* تحسين الذاكرة */
+    contain: layout style paint;
+}
+
+
+#map {
+    /* تحسين العرض */
+    transform: translateZ(0);
+
+    /* تحسين الذاكرة */
+    contain: layout style paint;
+}
+
+/* تحسين الفيديو والصوت */
+video, audio {
+    /* تحسين فك التشفير */
+    will-change: transform;
+}
+
+/* تحسين الصور */
+img {
+    /* تحسين العرض */
+    image-rendering: optimizeSpeed;
+
+    /* منع السحب */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    -user-drag: none;
+}
+
+/* تحسين التمرير */
+.scrollable {
+    /* تمرير سلس */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    /* تحسين الأداء */
+    contain: layout style paint;
+}
+
+/* تحسين الجداول */
+table {
+    /* تحسين العرض */
+    table-layout: fixed;
+}
+
+/* تحسين النماذج */
+input, textarea, select {
+    /* تحسين العرض */
+    will-change: contents;
+}
+
+/* تحسين الأزرار */
+button, .btn {
+    /* تحسين التفاعل */
+    touch-action: manipulation;
+}
+
+/* تحسين الشبكة */
+.container, .row, .col {
+    /* تحسين التخطيط */
+    contain: layout;
+}
+
+/* تحسين الكروت */
+.card {
+    /* تحسين العرض */
+    contain: layout style paint;
+}
+
+/* تحسين النوافذ المنبثقة */
+.modal, .popup {
+    /* تحسين العرض */
+    contain: layout style paint;
+
+    /* تحسين الطبقات */
+    isolation: isolate;
+}
+
+/* تحسين الرسوم المتحركة للتحميل */
+.loading-spinner {
+    /* تحسين الدوران */
+    will-change: transform;
+    contain: layout style paint;
+}
+
+/* تحسين شريط التقدم */
+.progress-bar {
+    /* تحسين العرض */
+    contain: layout style paint;
+}
+
+/* تحسين الإشعارات */
+.notification, .alert {
+    /* تحسين العرض */
+    contain: layout style paint;
+}
+
+/* تحسين القوائم */
+.dropdown-menu {
+    /* تحسين العرض */
+    contain: layout style paint;
+
+    /* تحسين الطبقات */
+    isolation: isolate;
+}
+
+/* تحسين الأيقونات */
+.icon, i[class*="fa-"] {
+    /* تحسين العرض */
+    contain: layout style paint;
+}
+
+/* تحسين النصوص الكبيرة */
+.large-text {
+    /* تحسين عرض النصوص */
+    text-rendering: optimizeSpeed;
+    font-display: swap;
+}
+
+/* تحسين الخلفيات */
+.background-image {
+    /* تحسين العرض */
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* تحسين الظلال */
+.performance-mode .shadow-sm {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+}
+
+.performance-mode .shadow {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+.performance-mode .shadow-lg {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* تحسين الحدود المستديرة */
+.performance-mode .rounded {
+    border-radius: 4px !important;
+}
+
+.performance-mode .rounded-lg {
+    border-radius: 6px !important;
+}
+
+/* تحسين التدرجات */
+.performance-mode .gradient {
+    background: #007bff !important;
+}
+
+/* تحسين الشفافية */
+.performance-mode .opacity-75 {
+    opacity: 1 !important;
+}
+
+.performance-mode .opacity-50 {
+    opacity: 1 !important;
+}
+
+/* تحسين التحويلات */
+.performance-mode .transform {
+    transform: none !important;
+}
+
+/* تحسين الفلاتر */
+.performance-mode .filter-blur {
+    filter: none !important;
+}
+
+.performance-mode .filter-brightness {
+    filter: none !important;
+}
+
+/* تحسين الرسوم المتحركة المخصصة */
+@keyframes optimized-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes optimized-slide {
+    from { transform: translateY(-10px); }
+    to { transform: translateY(0); }
+}
+
+.performance-mode .fade-in {
+    animation: optimized-fade 0.1s ease-out;
+}
+
+.performance-mode .slide-in {
+    animation: optimized-slide 0.1s ease-out;
+}
+
+/* تحسين الطباعة */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    #car-container,
+    #speedometer-canvas,
+    #map {
+        display: none !important;
+    }
+}
+
+/* تحسين الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .performance-mode {
+        /* تحسينات إضافية للموبايل */
+    }
+
+    .performance-mode .card {
+        box-shadow: none !important;
+        border: 1px solid #dee2e6 !important;
+    }
+
+    .performance-mode .rounded {
+        border-radius: 2px !important;
+    }
+}
+
+/* تحسين الشاشات عالية الكثافة */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .performance-mode img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* تحسين الوضع المظلم */
+@media (prefers-color-scheme: dark) {
+    .performance-mode {
+        /* تحسينات الوضع المظلم */
+    }
+}
+
+/* تحسين تفضيل الحركة المقللة */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

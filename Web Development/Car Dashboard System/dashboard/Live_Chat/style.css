@@ -1,0 +1,176 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    /* padding: 20px; */
+    direction: rtl;
+}
+
+.chat-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+}
+
+#chatBox {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+#chatBox::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+input {
+    width: calc(100% - 22px);
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+#messageInput {
+    width: 97%;
+    padding: 8px;
+    margin-left: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 8px 15px;
+    margin-top: 5px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+    max-width: 70%;
+    clear: both;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.message.sent {
+    background-color: #dcf8c6;
+    margin-left: 20px; 
+    float: left;
+}
+
+.message.received {
+    background-color: #e8e8e8;
+    float: right;
+}
+
+.message .username {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    font-size: 14px;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+}
+
+.message:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+}
+
+.message-input {
+    /* display: flex;
+    gap: 10px; */
+    margin-top: 20px;
+}
+
+.login-container {
+    max-width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.connection-status {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.dark-theme {
+    background-color: #222;
+    color: #eee;
+}
+
+.dark-theme .chat-container,
+.dark-theme .login-container {
+    background-color: #333;
+    color: #fff;
+    border-color: #444;
+}
+
+.dark-theme .message.sent {
+    background-color: #056162;
+    color: white;
+}
+
+.dark-theme .message.received {
+    background-color: #444;
+    color: white;
+}
+

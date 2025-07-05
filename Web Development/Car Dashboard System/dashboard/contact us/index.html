@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <div class="connect" id="contact">
+        <span class="big-circle"></span>
+        <img src="D:\contact us\shape.png" class="square" alt="" />
+        <div class="form">
+            <div class="contact-info">
+                <h3 class="title">Let's get in touch</h3>
+                <p class="text">
+                    Do Not Hesitate to Contact Us
+                </p>
+
+                <div class="infor">
+                    <div class="information">
+                        <img src="D:\contact us\location.png" class="icon" alt="" />
+                        <p>Misr Higher Institute for Engineering in Mansoura</p>
+                    </div>
+                    <div class="information">
+                        <img src="D:\contact us\email.png" class="icon" alt="" />
+                        <p>Laneloons@gmail.com</p>
+                    </div>
+                    <div class="information">
+                        <img src="D:\contact us\phone.png" class="icon" alt="" />
+                        <p>01027353688</p>
+                    </div>
+                </div>
+
+                <div class="social-media">
+                    <p style="font-size: 1.5rem;">Connect with us :</p>
+                    <div class="social-icon">
+                        <a href="https://www.facebook.com/share/15r6m5fziv/?mibextid=qi2Omg">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <span class="circle one"></span>
+                <span class="circle two"></span>
+
+                <form action="https://api.web3forms.com/submit" method="POST" autocomplete="off">
+                    <h3 class="title">Contact us</h3>
+                    <input type="hidden" name="access_key" value="3ecfe002-7bdd-41d5-bd13-656fe13235bb">
+                    <div class="input-container">
+                        <input type="text" name="name" class="input" />
+                        <label for="">Username</label>
+                        <span>Username</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" name="email" class="input" />
+                        <label for="">Email</label>
+                        <span>Email</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" name="phone" class="input" />
+                        <label for="">Phone</label>
+                        <span>Phone</span>
+                    </div>
+                    <div class="input-container textarea">
+                        <textarea name="message" class="input"></textarea>
+                        <label for="">Message</label>
+                        <span>Message</span>
+                    </div>
+                    <input type="submit" value="Send" class="btn" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("_TVhTJo9aS0lqztgk"); // ضع الـ Public Key الخاص بك هنا
+        })();
+
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+                .then(function (response) {
+                    alert("Message sent successfully!");
+                }, function (error) {
+                    alert("Failed to send message.");
+                });
+        });
+    </script>
+</body>
+
+</html>
+<script src="app.js"></script>
+</body>
+
+</html>

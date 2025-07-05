@@ -1,0 +1,126 @@
+
+
+
+.offcanvas-backdrop,
+.offcanvas-backdrop.fade,
+.offcanvas-backdrop.show,
+.offcanvas-backdrop.fade.show {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: -9999 !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+
+body.modal-open {
+    overflow: auto !important;
+    padding-right: 0 !important;
+}
+
+/* Ensure offcanvas works properly without backdrop */
+.offcanvas {
+    z-index: 1045 !important;
+    backdrop-filter: none !important;
+}
+
+.offcanvas.show {
+    transform: none !important;
+    visibility: visible !important;
+}
+
+/* Prevent any backdrop-related styles from being applied */
+.offcanvas-backdrop * {
+    display: none !important;
+}
+
+/* Additional safety measures */
+[class*="backdrop"],
+[class*="modal-backdrop"],
+[class*="offcanvas-backdrop"] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Ensure smooth transitions for offcanvas without backdrop interference */
+.offcanvas.offcanvas-end {
+    transition: transform 0.3s ease-in-out;
+}
+
+.offcanvas.offcanvas-end.show {
+    transform: translateX(0);
+}
+
+.offcanvas.offcanvas-end:not(.show) {
+    transform: translateX(100%);
+}
+
+/* Mobile specific fixes */
+@media (max-width: 767.98px) {
+    .offcanvas-backdrop,
+    .offcanvas-backdrop.fade,
+    .offcanvas-backdrop.show {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    body {
+        overflow: auto !important;
+        padding-right: 0 !important;
+    }
+}
+
+/* Ensure no backdrop appears during transitions */
+.offcanvas.showing .offcanvas-backdrop,
+.offcanvas.hiding .offcanvas-backdrop {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Force remove any backdrop that might be added dynamically */
+body > .offcanvas-backdrop {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+}
+
+/* Ensure main content remains interactive */
+.container-fluid,
+main,
+.navbar,
+.sidebar {
+    pointer-events: auto !important;
+}
+
+/* Additional Bootstrap offcanvas backdrop overrides */
+.offcanvas-backdrop.fade.show {
+    opacity: 0 !important;
+}
+
+.offcanvas-backdrop.show {
+    opacity: 0 !important;
+}
+
+/* Prevent backdrop from blocking clicks */
+* {
+    pointer-events: auto !important;
+}
+
+.offcanvas-backdrop * {
+    pointer-events: none !important;
+}

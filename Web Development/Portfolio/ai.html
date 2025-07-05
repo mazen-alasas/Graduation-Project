@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Features Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #008b77;
+            --primary-dark: #008b77;
+            --primary-light: #008b77;
+            --secondary: #008b77;
+            --secondary-dark: #008b77;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --white: #ffffff;
+            --black: #000000;
+            --radius: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            line-height: 1.5;
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style-position: inside;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-white {
+            color: var(--white);
+        }
+
+        .text-gray-300 {
+            color: var(--gray-300);
+        }
+
+        .text-gray-500 {
+            color: var(--gray-500);
+        }
+
+        .text-gray-600 {
+            color: var(--gray-600);
+        }
+
+        .text-gray-700 {
+            color: var(--gray-700);
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .bg-white {
+            background-color: var(--white);
+        }
+
+        .bg-gray-50 {
+            background-color: var(--gray-50);
+        }
+
+        .bg-gray-800 {
+            background-color: var(--gray-800);
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .bg-primary-light {
+            background-color: var(--primary-light);
+        }
+
+        .bg-gradient {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .py-8 {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .py-20 {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .pt-4 {
+            padding-top: 1rem;
+        }
+
+        .pt-8 {
+            padding-top: 2rem;
+        }
+
+        .pb-4 {
+            padding-bottom: 1rem;
+        }
+
+        .pb-8 {
+            padding-bottom: 2rem;
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+
+        .mt-4 {
+            margin-top: 1rem;
+        }
+
+        .mt-6 {
+            margin-top: 1.5rem;
+        }
+
+        .mt-8 {
+            margin-top: 2rem;
+        }
+
+        .mt-12 {
+            margin-top: 3rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .flex-grow {
+            flex-grow: 1;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-6 {
+            gap: 1.5rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .rounded {
+            border-radius: var(--radius);
+        }
+
+        .rounded-lg {
+            border-radius: var(--radius);
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        .shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .shadow-md {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .border-t {
+            border-top-width: 1px;
+            border-top-style: solid;
+        }
+
+        .border-b {
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+
+        .border-gray-200 {
+            border-color: var(--gray-200);
+        }
+
+        .border-gray-700 {
+            border-color: var(--gray-700);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .block {
+            display: block;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .absolute {
+            position: absolute;
+        }
+
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .z-10 {
+            z-index: 10;
+        }
+
+        .z-50 {
+            z-index: 50;
+        }
+
+        .opacity-10 {
+            opacity: 0.1;
+        }
+
+        .transition {
+            transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+
+        .transform {
+            transform: translateY(0) scale(1);
+        }
+
+        .scale-105 {
+            transform: scale(1.05);
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        .space-y-2 > * + * {
+            margin-top: 0.5rem;
+        }
+
+        .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+
+        .space-x-4 > * + * {
+            margin-left: 1rem;
+        }
+
+        .space-x-8 > * + * {
+            margin-left: 2rem;
+        }
+
+        .max-w-3xl {
+            max-width: 48rem;
+        }
+
+        .max-w-4xl {
+            max-width: 56rem;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .h-16 {
+            height: 4rem;
+        }
+
+        .h-8 {
+            height: 2rem;
+        }
+
+        .w-8 {
+            width: 2rem;
+        }
+
+        .object-contain {
+            object-fit: contain;
+        }
+
+        .overflow-x-auto {
+            overflow-x: auto;
+        }
+
+        .whitespace-pre-wrap {
+            white-space: pre-wrap;
+        }
+
+        /* Components */
+        .btn {
+            display: inline-block;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gray-100);
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: var(--white);
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card.active {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 4rem;
+            width: 4rem;
+            border-radius: 9999px;
+            background-color: #f3e8ff;
+            margin: 0 auto 1rem auto;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tab:hover {
+            color: var(--primary);
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .navbar-menu {
+            display: none;
+        }
+
+        .navbar-menu a {
+            margin-left: 2rem;
+            color: var(--gray-700);
+            transition: color 0.3s ease;
+        }
+
+        .navbar-menu a:hover {
+            color: var(--primary);
+        }
+
+        .navbar-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--gray-700);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--gray-700);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            position: relative;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 5rem 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 48rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 50px 50px;
+        }
+
+        .footer {
+            background-color: var(--gray-800);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style-type: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-300);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            color: var(--gray-300);
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-700);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray-300);
+        }
+
+        .method-item {
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .method-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .selected-method {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f3e8ff;
+            border-radius: var(--radius);
+            border: 1px solid #e9d5ff;
+        }
+
+        .feature-section {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .code-block {
+            background-color: var(--gray-900);
+            color: var(--gray-100);
+            padding: 1rem;
+            border-radius: var(--radius);
+            overflow-x: auto;
+        }
+
+        /* Mobile-specific fixes for implementation section */
+        .implementation-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .implementation-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .implementation-content {
+            width: 100%;
+        }
+
+        .implementation-steps {
+            margin-bottom: 2rem;
+        }
+
+        .implementation-tools {
+            margin-top: 1.5rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .navbar-toggle {
+                display: none;
+            }
+
+            .navbar-menu {
+                display: flex;
+                align-items: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .method-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .implementation-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .tabs {
+                overflow-x: visible;
+            }
+
+            .tab {
+                white-space: normal;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        /* Additional mobile optimizations */
+        @media (max-width: 767px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .feature-section {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            h4 {
+                font-size: 1.125rem;
+            }
+
+            .tabs {
+                margin-bottom: 1rem;
+            }
+
+            .tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            .implementation-image {
+                max-height: 250px;
+            }
+
+            .code-block {
+                font-size: 0.875rem;
+                padding: 0.75rem;
+            }
+        }
+        .home-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #008b77;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.home-button:hover {
+    background-color: #006c5d;
+}
+
+.header-container {
+    position: relative; /* لضمان أن الزر يتموضع بشكل صحيح */
+}
+.scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: #008b77;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease-in-out;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background-color: #006c5d;
+        }
+
+        .scroll-to-top i {
+            font-size: 1.5rem;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="home-button">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <div class="navbar-logo">
+                
+            </div>
+
+            <!-- Desktop Menu -->
+            
+
+            <!-- Mobile Menu Button -->
+            <button class="navbar-toggle" id="navbar-toggle">
+                
+            </button>
+        </div>
+
+        
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="text-4xl mb-6">AI Features Documentation</h1>
+            <p class="text-xl mb-8">Comprehensive guide to advanced artificial intelligence features for automotive systems</p>
+            <a href="#features" class="btn btn-primary">Explore Features</a>
+        </div>
+        <div class="hero-pattern"></div>
+    </section>
+
+    <!-- Introduction Section -->
+    
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-50" id="features">
+        <div class="container">
+            <h2 class="text-3xl font-bold text-center mb-12">AI Features</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" id="feature-cards">
+                <!-- Feature cards will be dynamically generated here -->
+            </div>
+
+            <div id="feature-details">
+                <!-- Feature details will be dynamically generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // Data for features
+        const features = [
+            {
+                id: "dfr",
+                title: "Driver Face Recognition",
+                shortDescription: "Identify and authenticate drivers",
+                description: "A security system that identifies the person operating a vehicle by scanning facial features.",
+                fullDescription: "Driver face recognition is an advanced security technology designed to identify the person operating a vehicle by scanning their facial features. This feature plays a crucial role in enhancing vehicle safety by ensuring that only authorized drivers can operate the car. It helps prevent unauthorized access and reduces the risk of vehicle theft by quickly detecting unknown individuals and triggering security responses.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>`,
+                image: "dfr.jpeg",
+                flowChart: "dfr usecase.PNG",
+                methods: [
+                    {
+                        name: "YOLO (You Only Look Once)",
+                        description: "Uses YOLO for face detection combined with face_recognition for identification.",
+                        advantages: [
+                            "Very effective real-time face detection using YOLO",
+                            "Accurate recognition by combining detection with face_recognition"
+                        ],
+                        disadvantages: [
+                            "YOLO only does detection, not recognition, so an extra step is needed",
+                            "Building and labeling dataset with bounding boxes is time-consuming",
+                            "Setup and integration are relatively complex"
+                        ]
+                    },
+                    {
+                        name: "CNN (Convolutional Neural Network)",
+                        description: "Uses a custom CNN model for face classification.",
+                        advantages: [
+                            "Customizable model that can classify individuals accurately",
+                            "Flexible and adjustable to specific project needs"
+                        ],
+                        disadvantages: [
+                            "Requires large labeled datasets for training",
+                            "Training is time and resource-intensive",
+                            "Multiple manual steps for data preparation and model tuning"
+                        ]
+                    },
+                    {
+                        name: "face_recognition Library",
+                        description: "Uses the face_recognition library for direct face comparison and recognition.",
+                        advantages: [
+                            "Easy to use and ready-made solution",
+                            "Needs only one image per person for recognition",
+                            "Very fast for real-time applications"
+                        ],
+                        disadvantages: [
+                            "Less flexible compared to custom CNN models",
+                            "Recognition accuracy may reduce with facial expression or lighting changes"
+                        ]
+                    }
+                ],
+                selectedMethod: "After reviewing various methods for DFR, we chose to implement the face_recognition library. This choice was based on its ease of use, real-time performance, and the minimal data requirement, as it needs only one image per person for effective recognition.",
+                useCases: [
+                    "Vehicle security and theft prevention",
+                    "Personalized driver settings",
+                    "Access control for fleet vehicles",
+                    "Driver authentication for shared vehicles"
+                ],
+                implementationSteps: [
+                    "Capture facial images of authorized drivers",
+                    "Create a database of facial encodings",
+                    "Set up real-time camera feed in the vehicle",
+                    "Implement face detection and recognition algorithm",
+                    "Configure security responses for unauthorized access"
+                ],
+                tools: [
+                    "face_recognition library",
+                    "OpenCV for image and video processing",
+                    "NumPy for data handling",
+                    "In-vehicle camera system"
+                ],
+                pseudoCode: `START
+SET known_encodings = []
+SET known_names = []
+
+FOR EACH image_file IN FOLDER "known_faces/":
+    LOAD image
+    ENCODE face USING FACE_RECOGNITION
+    APPEND encoding TO known_encodings
+END FOR
+
+SET TARGET_NAME = "Name"
+SET frame_count = 0
+SET MAX_FRAMES = 30
+
+OPEN CAMERA
+
+WHILE frame_count < MAX_FRAMES:
+    READ frame FROM CAMERA
+    INCREMENT frame_count
+
+    DETECT faces IN frame
+
+    IF faces FOUND:
+        ENCODE all faces
+        FOR EACH encoded_face IN frame:
+            COMPARE encoded_face WITH known_encodings
+            IF MATCH FOUND AND NAME == TARGET_NAME:
+                PRINT "TARGET FOUND"
+                RELEASE CAMERA
+                RETURN
+            END IF
+        END FOR
+    END IF
+END WHILE
+PRINT "TARGET NOT FOUND AFTER 30 FRAMES"
+END`
+            },
+            {
+                id: "dms",
+                title: "Driver Monitoring System",
+                shortDescription: "Monitor driver alertness and attention",
+                description: "A system that continuously assesses the driver's attention, alertness, and overall state.",
+                fullDescription: "The Driver Monitoring System (DMS) is an advanced in-vehicle technology designed to enhance road safety by continuously assessing the driver's attention, alertness, and overall state. This system plays a critical role in mitigating human errors, which are a leading cause of road accidents. By leveraging cutting-edge sensors, machine learning, and computer vision techniques, DMS aims to detect signs of fatigue, drowsiness, distraction, or other abnormal behaviors that may compromise driving safety.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>`,
+                image: "dfm.jpeg",
+                flowChart: "dfr usecase.PNG",
+                methods: [
+                    {
+                        name: "Facial Landmark Detection",
+                        description: "Detects key points on the face to monitor facial expressions, eye movements, and head position.",
+                        advantages: [
+                            "Precise tracking of facial features",
+                            "Works well in real-time with high accuracy"
+                        ],
+                        disadvantages: [
+                            "Sensitive to lighting conditions or occlusions (e.g., sunglasses)",
+                            "Requires computational resources for processing"
+                        ]
+                    },
+                    {
+                        name: "Eye Aspect Ratio (EAR)",
+                        description: "Measures the ratio of eye openness to detect drowsiness or fatigue.",
+                        advantages: [
+                            "Simple and effective for detecting drowsiness",
+                            "Lightweight and easy to implement"
+                        ],
+                        disadvantages: [
+                            "Sensitive to lighting conditions or glasses",
+                            "Limited to eye-related behaviors only"
+                        ]
+                    },
+                    {
+                        name: "CNN (Convolutional Neural Networks)",
+                        description: "A type of deep learning model used for image and video processing, particularly for tasks like facial landmark detection, object recognition, and emotion analysis.",
+                        advantages: [
+                            "Highly effective for visual tasks like facial expression analysis",
+                            "Can be fine-tuned for specific use cases"
+                        ],
+                        disadvantages: [
+                            "Requires significant computational resources",
+                            "Sensitive to lighting conditions and camera quality",
+                            "Needs large datasets for accurate training"
+                        ]
+                    }
+                ],
+                selectedMethod: "The most effective approach we will use is Facial Landmark Detection by dlib combined with Eye Aspect Ratio (EAR). This combination allows us to accurately track facial features and detect signs of drowsiness or fatigue by analyzing eye openness, providing a reliable and real-time solution for monitoring the driver's state.",
+                useCases: [
+                    "Drowsiness detection during long drives",
+                    "Distraction monitoring in urban traffic",
+                    "Driver attention assessment in autonomous vehicles",
+                    "Safety monitoring for commercial fleet drivers"
+                ],
+                implementationSteps: [
+                    "Set up in-cabin camera system",
+                    "Implement facial landmark detection algorithm",
+                    "Calculate Eye Aspect Ratio (EAR) from eye landmarks",
+                    "Define thresholds for drowsiness detection",
+                    "Configure alert system for detected issues"
+                ],
+                tools: [
+                    "Dlib for facial landmark detection",
+                    "OpenCV for image processing",
+                    "NumPy for mathematical calculations",
+                    "In-cabin camera with infrared capability"
+                ],
+                pseudoCode: `START 
+SET EAR_THRESHOLD = 0.25
+SET ALARM_TIME = 3 seconds
+SET NO_FACE_TIME = 4 seconds
+CHECK if "shape_predictor_68_face_landmarks.dat" exists:
+    IF NOT → SHOW ERROR and EXIT
+LOAD face detector and landmark model
+
+OPEN CAMERA
+WHILE True:
+    CAPTURE frame from camera   
+    IF no frame → BREAK and SHOW error    
+    CONVERT to grayscale
+    DETECT faces in frame
+    IF NO face detected:
+        START timer for missing face
+        IF timer > NO_FACE_TIME:
+            SHOW "Face not detected!"
+            PLAY alarm sound
+    ELSE:
+        RESET face timer
+        
+        FOR EACH face:
+            GET eye landmarks
+            CALCULATE EAR for both eyes
+            AVERAGE EAR
+
+            IF EAR < threshold:
+                START eye closed timer
+                IF timer > ALARM_TIME:
+                    SHOW "Driver is sleeping!"
+                    PLAY alarm sound
+            ELSE:
+                RESET eye timer
+
+    SHOW EAR value on screen
+    SHOW warning message (if any) for 2 seconds
+    DISPLAY updated frame
+END`
+            },
+            {
+                id: "tsr",
+                title: "Traffic Sign Recognition",
+                shortDescription: "Identify and interpret road signs",
+                description: "A system that identifies and interprets road signs in real-time.",
+                fullDescription: "Traffic Sign Recognition (TSR) is a vital Advanced Driver Assistance System (ADAS) feature designed to identify and interpret road signs in real-time. By leveraging computer vision and deep learning algorithms, TSR enables vehicles to recognize various traffic signs such as speed limits, stop signs, and warning signs, enhancing driver awareness and overall road safety.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>`,
+                image: "tsr.jpeg",
+                flowChart: "tsr usecase.PNG",
+                methods: [
+                    {
+                        name: "Traditional Image Processing Techniques",
+                        description: "Uses classic image processing techniques such as color thresholding, shape detection, and edge detection.",
+                        advantages: [
+                            "Lightweight and fast",
+                            "Does not require extensive training data"
+                        ],
+                        disadvantages: [
+                            "Limited accuracy",
+                            "Not robust against environmental variations such as lighting, blur, or occlusion"
+                        ]
+                    },
+                    {
+                        name: "CNN-Based Classification",
+                        description: "Detects possible regions of interest in the image and applies a CNN to classify the cropped regions into traffic sign categories.",
+                        advantages: [
+                            "Higher accuracy than traditional methods",
+                            "Can learn complex features automatically from training data"
+                        ],
+                        disadvantages: [
+                            "Slower due to separate detection and classification steps",
+                            "Requires a labeled dataset for training"
+                        ]
+                    },
+                    {
+                        name: "YOLO Object Detection",
+                        description: "A real-time object detection model that performs both localization and classification in a single step.",
+                        advantages: [
+                            "Extremely fast (real-time performance)",
+                            "High accuracy for both detection and classification",
+                            "One-step pipeline simplifies integration"
+                        ],
+                        disadvantages: [
+                            "Requires GPU for training",
+                            "Needs sufficient training data and augmentation for best performance"
+                        ]
+                    }
+                ],
+                selectedMethod: "The most effective approach we will use is YOLO. It provides high accuracy and real-time performance, making it ideal for detecting and classifying traffic signs quickly. Its lightweight design also supports deployment on embedded systems like Raspberry Pi, ensuring efficiency in dynamic driving conditions.",
+                useCases: [
+                    "Speed limit recognition and alerts",
+                    "Stop sign and traffic light detection",
+                    "Warning sign identification",
+                    "Navigation assistance with road sign information"
+                ],
+                implementationSteps: [
+                    "Collect and prepare traffic sign dataset (GTSRB)",
+                    "Train YOLO model on traffic sign categories",
+                    "Optimize model for embedded deployment",
+                    "Implement real-time detection pipeline",
+                    "Configure driver notification system"
+                ],
+                tools: [
+                    "YOLO framework for object detection",
+                    "OpenCV for image capture and processing",
+                    "PyTorch or ONNX for model inference",
+                    "GTSRB dataset for training"
+                ],
+                pseudoCode: `START
+LOAD YOLO MODEL
+OPEN CAMERA
+WHILE CAMERA IS OPEN:
+    READ frame FROM CAMERA
+    PREPROCESS frame
+    PASS frame TO YOLO MODEL
+    GET detections (boxes, class_ids, confidences)
+    FOR EACH detection:
+        IF confidence >= THRESHOLD:
+            GET class_name FROM class_id
+            DRAW bounding box AND label ON frame
+            DISPLAY result
+        END IF
+    END FOR
+END WHILE
+END`
+            },
+            {
+                id: "aps",
+                title: "Auto Parking System",
+                shortDescription: "Assist with vehicle parking and lane detection",
+                description: "A system that assists with parking and lane detection for safer driving.",
+                fullDescription: "The Auto Parking System (APS) is considered one of the essential components in autonomous driving and driver assistance systems. It relies on computer vision and image processing techniques to accurately detect and analyze lane markings on the road. This helps maintain the vehicle's movement within its designated path, reducing the risk of unintended lane departures and enhancing driving safety.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.6-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg>`,
+                image: "aps.jpeg",
+                flowChart: "aps usecase.PNG",
+                methods: [
+                    {
+                        name: "Canny Edge Detection & Hough Transform",
+                        description: "Uses edge detection and Hough Transform to identify lane lines.",
+                        advantages: [
+                            "Canny provides high-precision edge detection",
+                            "Hough Transform easily detects lane lines",
+                            "Region of Interest (ROI) can be defined for improved results"
+                        ],
+                        disadvantages: [
+                            "Sensitive to lighting and weather conditions",
+                            "Doesn't support detection of curved lanes",
+                            "Requires parameter tuning for accurate detection"
+                        ]
+                    },
+                    {
+                        name: "Deep Learning Models (CNNs)",
+                        description: "Uses convolutional neural networks for lane recognition.",
+                        advantages: [
+                            "High Accuracy: Handles complex road conditions, diverse lighting, and occlusions",
+                            "Handles Curves Well: Excels at detecting lanes on curved roads",
+                            "Pattern Learning: Automatically learns spatial features from raw data"
+                        ],
+                        disadvantages: [
+                            "Large Datasets Needed: Requires significant labeled data for training",
+                            "High Computational Cost: Needs powerful hardware and long training times"
+                        ]
+                    },
+                    {
+                        name: "Advanced Sensing (IMU & GPS Integration)",
+                        description: "Combines IMU and GPS data for enhanced positioning and lane detection.",
+                        advantages: [
+                            "High Positioning Accuracy: Ensures precise vehicle positioning during lane changes",
+                            "Real-Time Data: Provides immediate position updates for better decision-making",
+                            "Enhanced Stability: Helps maintain stability and orientation"
+                        ],
+                        disadvantages: [
+                            "Signal Loss: GPS can be unreliable in areas with weak satellite visibility",
+                            "IMU Drift: IMUs may drift over time, causing small positional errors"
+                        ]
+                    }
+                ],
+                selectedMethod: "After reviewing various methods for lane detection, we chose to implement Canny Edge Detection and Hough Transform. This choice was based on its low computational cost, simplicity, and effectiveness in clear, straightforward conditions, such as straight roads. Additionally, this approach provides fast processing, making it ideal for detecting lane lines efficiently with minimal resource usage.",
+                useCases: [
+                    "Lane departure warning system",
+                    "Automated parallel parking",
+                    "Emergency roadside parking",
+                    "Lane keeping assistance"
+                ],
+                implementationSteps: [
+                    "Set up forward-facing camera system",
+                    "Implement Canny edge detection algorithm",
+                    "Apply Hough Transform for line detection",
+                    "Define region of interest for road area",
+                    "Develop lane tracking and deviation alert system"
+                ],
+                tools: [
+                    "OpenCV for edge detection and Hough Transform",
+                    "NumPy for data manipulation",
+                    "Forward-facing camera system",
+                    "Image processing pipeline"
+                ],
+                pseudoCode: `START
+OPEN CAMERA
+WHILE CAMERA IS OPEN:
+    READ frame FROM CAMERA
+    CONVERT TO grayscale
+    APPLY Gaussian blur
+    APPLY Canny edge detection
+    CREATE mask for region of interest
+    APPLY mask to edges
+    APPLY Hough Transform to detect lines
+    FILTER and GROUP lines into left and right lanes
+    CALCULATE lane position and vehicle offset
+    IF vehicle deviating from lane:
+        ALERT driver
+    DRAW lane lines on frame
+    DISPLAY result
+END WHILE
+END`
+            }
+        ];
+
+        // DOM Elements
+        const navbarToggle = document.getElementById('navbar-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const featureCardsContainer = document.getElementById('feature-cards');
+        const featureDetailsContainer = document.getElementById('feature-details');
+
+        // Toggle mobile menu
+        navbarToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            
+            // Toggle menu icon
+            const menuIcon = navbarToggle.querySelector('svg');
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.innerHTML = `
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                `;
+            } else {
+                menuIcon.innerHTML = `
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                `;
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                
+                // Reset menu icon
+                const menuIcon = navbarToggle.querySelector('svg');
+                menuIcon.innerHTML = `
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                `;
+            });
+        });
+
+        // Generate feature cards
+        features.forEach(feature => {
+            const featureCard = document.createElement('div');
+            featureCard.className = 'feature-card';
+            featureCard.dataset.id = feature.id;
+            featureCard.innerHTML = `
+                <div class="feature-icon">
+                    ${feature.icon}
+                </div>
+                <h3 class="font-semibold text-xl text-center mb-2">${feature.title}</h3>
+                <p class="text-center text-gray-600">${feature.shortDescription}</p>
+            `;
+            featureCardsContainer.appendChild(featureCard);
+
+            // Add click event to feature card
+            featureCard.addEventListener('click', () => {
+                // Toggle active class on feature cards
+                document.querySelectorAll('.feature-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+                featureCard.classList.add('active');
+
+                // Show feature details
+                showFeatureDetails(feature);
+            });
+        });
+
+        // Function to show feature details
+        function showFeatureDetails(feature) {
+            featureDetailsContainer.innerHTML = `
+                <div class="feature-section">
+                    <h3 class="text-2xl font-bold mb-4">${feature.title}</h3>
+                    <p class="text-gray-700 mb-6">${feature.description}</p>
+
+                    <div class="tabs">
+                        <div class="tab active" data-tab="overview">Overview</div>
+                        <div class="tab" data-tab="methods">Methods</div>
+                        <div class="tab" data-tab="implementation">Implementation</div>
+                        <div class="tab" data-tab="code">Pseudo Code</div>
+                    </div>
+
+                    <div class="tab-content active" data-content="overview">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-semibold mb-4">Description</h4>
+                                <p class="text-gray-700">${feature.fullDescription}</p>
+
+                                <h4 class="text-xl font-semibold mt-6 mb-4">Use Cases</h4>
+                                <ul class="list-disc pl-5 space-y-2">
+                                    ${feature.useCases.map(useCase => `
+                                        <li class="text-gray-700">${useCase}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+
+                            <div class="flex justify-center items-center">
+                                <img src="${feature.image}" alt="${feature.title}" class="rounded-lg shadow-md max-h-80 object-contain">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" data-content="methods">
+                        <h4 class="text-xl font-semibold mb-4">Implementation Methods</h4>
+
+                        <div class="space-y-6">
+                            ${feature.methods.map((method, index) => `
+                                <div class="method-item">
+                                    <h5 class="text-lg font-medium mb-2">${method.name}</h5>
+                                    <p class="text-gray-700 mb-4">${method.description}</p>
+
+                                    <div class="method-grid">
+                                        <div>
+                                            <h6 class="font-medium mb-2">Advantages</h6>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                ${method.advantages.map(adv => `
+                                                    <li class="text-gray-700">${adv}</li>
+                                                `).join('')}
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <h6 class="font-medium mb-2">Disadvantages</h6>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                ${method.disadvantages.map(disadv => `
+                                                    <li class="text-gray-700">${disadv}</li>
+                                                `).join('')}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="selected-method">
+                            <h5 class="text-lg font-medium mb-2">Selected Method</h5>
+                            <p class="text-gray-700">${feature.selectedMethod}</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" data-content="implementation">
+                        <h4 class="text-xl font-semibold mb-4">Implementation Details</h4>
+
+                        <div class="implementation-grid">
+                            <div class="implementation-content">
+                                <div class="implementation-steps">
+                                    <h5 class="text-lg font-medium mb-3">Implementation Steps</h5>
+                                    <ol class="list-decimal pl-5 space-y-2">
+                                        ${feature.implementationSteps.map(step => `
+                                            <li class="text-gray-700">${step}</li>
+                                        `).join('')}
+                                    </ol>
+                                </div>
+
+                                <div class="implementation-tools">
+                                    <h5 class="text-lg font-medium mb-3">Required Tools</h5>
+                                    <ul class="list-disc pl-5 space-y-2">
+                                        ${feature.tools.map(tool => `
+                                            <li class="text-gray-700">${tool}</li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h5 class="text-lg font-medium mb-3">Flow Chart</h5>
+                                <img src="${feature.flowChart}" alt="${feature.title} Flow Chart" class="implementation-image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" data-content="code">
+                        <h4 class="text-xl font-semibold mb-4">Pseudo Code</h4>
+
+                        <div class="code-block">
+                            <pre class="whitespace-pre-wrap"><code>${feature.pseudoCode}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Add tab functionality
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and content
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    tab.classList.add('active');
+                    document.querySelector(`.tab-content[data-content="${tab.dataset.tab}"]`).classList.add('active');
+                });
+            });
+
+            // Scroll to feature details
+            featureDetailsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Select the first feature by default
+        if (features.length > 0) {
+            const firstFeatureCard = document.querySelector('.feature-card');
+            if (firstFeatureCard) {
+                firstFeatureCard.classList.add('active');
+                showFeatureDetails(features[0]);
+            }
+        }
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+            let showScrollTop = false;
+
+            function updateScrollTopButton() {
+                const shouldShow = window.pageYOffset > 300;
+                if (shouldShow !== showScrollTop) {
+                    showScrollTop = shouldShow;
+                    if (showScrollTop) {
+                        scrollToTopBtn.classList.add('show');
+                    } else {
+                        scrollToTopBtn.classList.remove('show');
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', updateScrollTopButton);
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Initial check for scroll position
+            updateScrollTopButton();
+
+            // Image placeholder click functionality (optional)
+            const imagePlaceholders = document.querySelectorAll('.image-placeholder');
+            imagePlaceholders.forEach(placeholder => {
+                placeholder.addEventListener('click', function () {
+                    // You can add functionality here to open file picker or image upload
+                    console.log('Image placeholder clicked - you can add image upload functionality here');
+                });
+            });
+        
+    </script>
+</body>
+</html>

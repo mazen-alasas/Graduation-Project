@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Components Section */
+.components-section {
+    padding: 5rem 0;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #3498db;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.search-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#component-search {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    flex-grow: 1;
+    max-width: 500px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+#component-search:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+#price-filter {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.component-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.component-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    position: relative;
+    height: 200px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.component-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.component-card:hover .component-image {
+    transform: scale(1.05);
+}
+
+.component-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #e74c3c;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.component-name {
+    margin: 0 0 1rem;
+    font-size: 1.3rem;
+    color: #2c3e50;
+}
+
+.component-name a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.component-name a:hover {
+    color: #3498db;
+}
+
+.component-desc {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.component-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.spec {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    color: #34495e;
+    background: #f1f5f9;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+}
+
+.spec i {
+    font-size: 1rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #eee;
+    background: #f8fafc;
+}
+
+.component-price {
+    font-weight: bold;
+    color: #2ecc71;
+    font-size: 1.2rem;
+}
+
+.compare-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+}
+
+.compare-btn:hover {
+    background: #2980b9;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 900px;
+    width: 90%;
+    position: relative;
+    animation: modalopen 0.4s;
+}
+
+@keyframes modalopen {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #7f8c8d;
+}
+
+.comparison-table {
+    margin-top: 1rem;
+    overflow-x: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .components-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .search-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .components-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .component-card {
+        max-width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <section class="components-section" id="components">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">📊 قائمة المكونات الإلكترونية</h2>
+                <p class="section-subtitle">استكشف تفاصيل المكونات الأساسية المستخدمة في نظامنا</p>
+                <div class="search-filter">
+                    <input type="text" id="component-search" placeholder="ابحث عن مكون...">
+                    <select id="price-filter">
+                        <option value="all">جميع الفئات السعرية</option>
+                        <option value="0-100">حتى 100 ج.م</option>
+                        <option value="100-500">100 - 500 ج.م</option>
+                        <option value="500-1000">500 - 1000 ج.م</option>
+                        <option value="1000+">أكثر من 1000 ج.م</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="components-grid">
+                <!-- Component Card 1 -->
+                            <!-- Component Card 4 -->
+            <div class="component-card" data-price="350" data-category="wireless">
+                <div class="card-header">
+                    <img src="esp32.webp" alt="ESP32" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/raspberry-pi-5-computer-model-b-8gb-ram/" target="_blank">
+                            ESP32 Development Board
+                        </a>
+                    </h3>
+                    <p class="component-desc">Features both WiFi and Bluetooth capabilities in a single board. Powered by ESP-WROOM-32 module with ultra-low power consumption. Offers more GPIOs than ESP8266 for versatile applications.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-wifi'></i> WiFi + Bluetooth</span>
+                        <span class="spec"><i class='bx bx-chip'></i> 240MHz Dual-Core</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">350.00 EGP</div>
+                    <button class="compare-btn" data-id="4">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 5 -->
+            <div class="component-card" data-price="580" data-category="sensors">
+                <div class="card-header">
+                    <img src="uplox.webp" alt="Ublox NEO-6M" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://store.fut-electronics.com/products/ublox-neo-6m-gps-module" target="_blank">
+                            Ublox NEO-6M GPS Module
+                        </a>
+                    </h3>
+                    <p class="component-desc">High precision GPS module with binary output and indoor sensitivity. Includes backup battery and EEPROM for configuration storage. Ideal for navigation and tracking applications.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-map'></i> GPS</span>
+                        <span class="spec"><i class='bx bx-battery'></i> Backup Battery</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">580.00 EGP</div>
+                    <button class="compare-btn" data-id="5">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 6 -->
+            <div class="component-card" data-price="720" data-category="sensors">
+                <div class="card-header">
+                    <img src="10dof.webp" alt="10 DOF IMU" class="component-image">
+                    <div class="component-badge">Advanced</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://store.fut-electronics.com/products/10-dof-imu-mpu6050-compass" target="_blank">
+                            10 DOF IMU Sensor
+                        </a>
+                    </h3>
+                    <p class="component-desc">Combines 5 sensors including 3-axis gyro, accelerometer, digital compass and barometric pressure sensor. All accessible via I2C bus. Perfect for drones and robotics.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-compass'></i> 10 DOF</span>
+                        <span class="spec"><i class='bx bx-slider-alt'></i> I2C Interface</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">720.00 EGP</div>
+                    <button class="compare-btn" data-id="6">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 7 -->
+            <div class="component-card" data-price="350" data-category="display">
+                <div class="card-header">
+                    <img src="lcd.jpg" alt="Character LCD" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/lcd-4x20-blue/" target="_blank">
+                            20×4 Character LCD
+                        </a>
+                    </h3>
+                    <p class="component-desc">Blue backlight character LCD display with 20 columns and 4 rows. Standard HD44780 compatible interface for easy integration with microcontrollers.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-text'></i> 20x4</span>
+                        <span class="spec"><i class='bx bx-chip'></i> HD44780</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">350.00 EGP</div>
+                    <button class="compare-btn" data-id="7">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 8 -->
+            <div class="component-card" data-price="45" data-category="display">
+                <div class="card-header">
+                    <img src="spi-lcd.webp" alt="I2C LCD Module" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://store.fut-electronics.com/products/charcter-lcd-16x2-with-serial-interface-iic" target="_blank">
+                            I2C LCD Interface Module
+                        </a>
+                    </h3>
+                    <p class="component-desc">Solves the problem of multiple pins required to control LCDs. Reduces connection wires to just 4 (VCC, GND, SDA, SCL) while maintaining full functionality.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-transfer-alt'></i> I2C</span>
+                        <span class="spec"><i class='bx bx-cable-car'></i> 4-Wire</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">45.00 EGP</div>
+                    <button class="compare-btn" data-id="8">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 9 -->
+            <div class="component-card" data-price="45" data-category="sensors">
+                <div class="card-header">
+                    <img src="ultrasonic.webp" alt="Ultrasonic Sensor" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/ultrasonic-distance-sensor-hc-sr04/" target="_blank">
+                            HC-SR04 Ultrasonic Sensor
+                        </a>
+                    </h3>
+                    <p class="component-desc">Non-contact distance measurement sensor with 2cm-400cm range and 3mm accuracy. Ideal for obstacle detection, liquid level measurement and more.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-ruler'></i> 2-400cm</span>
+                        <span class="spec"><i class='bx bx-target-lock'></i> ±3mm</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">45.00 EGP</div>
+                    <button class="compare-btn" data-id="9">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 10 -->
+            <div class="component-card" data-price="145" data-category="programming">
+                <div class="card-header">
+                    <img src="avrusb.webp" alt="USBASP Programmer" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/usb-asp-avr-programming-device-for-atmel-processors/" target="_blank">
+                            USBASP AVR Programmer
+                        </a>
+                    </h3>
+                    <p class="component-desc">Allows reading/writing microcontroller EEPROM, firmware, fuse bits and lock bits. Supports most AVR microcontrollers with ISP interface.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-usb'></i> USB</span>
+                        <span class="spec"><i class='bx bx-microchip'></i> AVR</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">145.00 EGP</div>
+                    <button class="compare-btn" data-id="10">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 11 -->
+            <div class="component-card" data-price="385" data-category="mechanical">
+                <div class="card-header">
+                    <img src="body.jpg" alt="Robot Chassis" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/robot-chassis-4-gear-motors-4-wheels-random-color-chassis/" target="_blank">
+                            Robot Chassis with Motors
+                        </a>
+                    </h3>
+                    <p class="component-desc">Complete 4-wheel drive robot platform with 4 gear motors, wheels and chassis. Ready for Arduino/Raspberry Pi robotics projects.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-cog'></i> 4 Motors</span>
+                        <span class="spec"><i class='bx bx-tachometer'></i> 100RPM</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">385.00 EGP</div>
+                    <button class="compare-btn" data-id="11">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 12 -->
+            <div class="component-card" data-price="380" data-category="sensors">
+                <div class="card-header">
+                    <img src="sheet.webp" alt="Pressure Sheet" class="component-image">
+                    <div class="component-badge">Special</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/robot-chassis-4-gear-motors-4-wheels-random-color-chassis/" target="_blank">
+                            Pressure-Sensitive Conductive Sheet
+                        </a>
+                    </h3>
+                    <p class="component-desc">Also known as Velostat/Linqstat. Reduces resistance when squeezed. Perfect for making flexible sensors, wearable tech and pressure mats.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-touch'></i> Pressure</span>
+                        <span class="spec"><i class='bx bx-flexible'></i> Flexible</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">380.00 EGP</div>
+                    <button class="compare-btn" data-id="12">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 13 -->
+            <div class="component-card" data-price="8" data-category="audio">
+                <div class="card-header">
+                    <img src="buzzer.jpg" alt="Buzzer" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/active-buzzer-5v/" target="_blank">
+                            5V Active Buzzer
+                        </a>
+                    </h3>
+                    <p class="component-desc">Compact 5V buzzer that emits sound when voltage is applied. Ideal for alarms, notifications and electronic projects requiring audible feedback.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-volume-full'></i> 85dB</span>
+                        <span class="spec"><i class='bx bx-bolt'></i> 5V</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">8.00 EGP</div>
+                    <button class="compare-btn" data-id="13">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 14 -->
+            <div class="component-card" data-price="27" data-category="prototyping">
+                <div class="card-header">
+                    <img src="board.webp" alt="Breadboard" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/breadboard-400-tie-point/" target="_blank">
+                            400 Tie-Point Breadboard
+                        </a>
+                    </h3>
+                    <p class="component-desc">Standard size solderless breadboard with 400 tie-points. Perfect for prototyping circuits without soldering. Compatible with jumper wires.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-grid'></i> 400 Points</span>
+                        <span class="spec"><i class='bx bx-plug'></i> Solderless</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">27.00 EGP</div>
+                    <button class="compare-btn" data-id="14">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 15 -->
+            <div class="component-card" data-price="40" data-category="prototyping">
+                <div class="card-header">
+                    <img src="breadboard.webp" alt="Breadboard" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/breadboard-840-tie-point/" target="_blank">
+                            840 Tie-Point Breadboard
+                        </a>
+                    </h3>
+                    <p class="component-desc">Large solderless breadboard with 840 tie-points. Includes power rails and ample space for complex circuit prototyping.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-grid'></i> 840 Points</span>
+                        <span class="spec"><i class='bx bx-battery'></i> Power Rails</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">40.00 EGP</div>
+                    <button class="compare-btn" data-id="15">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 16 -->
+            <div class="component-card" data-price="95" data-category="mechanical">
+                <div class="card-header">
+                    <img src="servo.webp" alt="Servo Motor" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://store.fut-electronics.com/products/micro-servo-motor-1-3kg-cm" target="_blank">
+                            Micro Servo Motor (1.3kg/cm)
+                        </a>
+                    </h3>
+                    <p class="component-desc">Positional rotation servo with 1.3kg/cm torque. Holds position using control signal. Ideal for robotics, RC models and automation projects.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-rotate-right'></i> 180°</span>
+                        <span class="spec"><i class='bx bx-bulb'></i> 1.3kg/cm</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">95.00 EGP</div>
+                    <button class="compare-btn" data-id="16">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 17 -->
+            <div class="component-card" data-price="1" data-category="cables">
+                <div class="card-header">
+                    <img src="wires.webp" alt="Jumper Wires" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="#" target="_blank">
+                            Jumper Wires (Male-Male)
+                        </a>
+                    </h3>
+                    <p class="component-desc">200mm long jumper wires with male connectors on both ends. For connecting female headers on development boards and components.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-cable-car'></i> 200mm</span>
+                        <span class="spec"><i class='bx bx-male'></i> Male-Male</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">1.00 EGP</div>
+                    <button class="compare-btn" data-id="17">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 18 -->
+            <div class="component-card" data-price="55" data-category="power">
+                <div class="card-header">
+                    <img src="battery.webp" alt="18650 Battery" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://store.fut-electronics.com/products/18650-lithium-ion-rechargeable-high-quality-battery-3-7v-1200-mah" target="_blank">
+                            18650 Li-ion Battery (3.7V 1200mAh)
+                        </a>
+                    </h3>
+                    <p class="component-desc">High quality rechargeable lithium-ion battery with 3.7V and 1200mAh capacity. Perfect for portable electronics and power banks.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-battery'></i> 1200mAh</span>
+                        <span class="spec"><i class='bx bx-recycle'></i> Rechargeable</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">55.00 EGP</div>
+                    <button class="compare-btn" data-id="18">Compare</button>
+                </div>
+            </div>
+
+            <!-- Component Card 19 -->
+            <div class="component-card" data-price="85" data-category="motor-control">
+                <div class="card-header">
+                    <img src="driver.jpg" alt="L298 Motor Driver" class="component-image">
+                </div>
+                <div class="card-body">
+                    <h3 class="component-name">
+                        <a href="https://electra.store/product/l298-red-module/" target="_blank">
+                            L298 Motor Driver Module
+                        </a>
+                    </h3>
+                    <p class="component-desc">Dual H-bridge motor driver for controlling two DC motors or one stepper motor. Supports up to 2A per channel with heat sink.</p>
+                    <div class="component-specs">
+                        <span class="spec"><i class='bx bx-cog'></i> Dual H-bridge</span>
+                        <span class="spec"><i class='bx bx-bolt'></i> 2A/channel</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="component-price">85.00 EGP</div>
+                    <button class="compare-btn" data-id="19">Compare</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Search functionality
+    const searchInput = document.getElementById('component-search');
+    const priceFilter = document.getElementById('price-filter');
+    const componentCards = document.querySelectorAll('.component-card');
+    
+    // Filter components based on search and price
+    function filterComponents() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const priceRange = priceFilter.value;
+        
+        componentCards.forEach(card => {
+            const name = card.querySelector('.component-name').textContent.toLowerCase();
+            const desc = card.querySelector('.component-desc').textContent.toLowerCase();
+            const price = parseFloat(card.getAttribute('data-price'));
+            
+            // Check search term
+            const matchesSearch = name.includes(searchTerm) || desc.includes(searchTerm);
+            
+            // Check price range
+            let matchesPrice = true;
+            if (priceRange !== 'all') {
+                if (priceRange === '0-100' && price > 100) matchesPrice = false;
+                else if (priceRange === '100-500' && (price <= 100 || price > 500)) matchesPrice = false;
+                else if (priceRange === '500-1000' && (price <= 500 || price > 1000)) matchesPrice = false;
+                else if (priceRange === '1000+' && price <= 1000) matchesPrice = false;
+            }
+            
+            // Show/hide card based on filters
+            if (matchesSearch && matchesPrice) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    
+    // Event listeners for filtering
+    searchInput.addEventListener('input', filterComponents);
+    priceFilter.addEventListener('change', filterComponents);
+    
+    // Comparison functionality
+    const compareBtns = document.querySelectorAll('.compare-btn');
+    const modal = document.getElementById('comparison-modal');
+    const closeModal = document.querySelector('.close-modal');
+    const comparisonTable = document.querySelector('.comparison-table');
+    let selectedComponents = [];
+    
+    // Open modal
+    function openModal() {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Close modal
+    function closeModalFunc() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Toggle component selection for comparison
+    compareBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const componentId = this.getAttribute('data-id');
+            const componentCard = this.closest('.component-card');
+            
+            if (this.classList.contains('selected')) {
+                // Remove from comparison
+                this.classList.remove('selected');
+                this.textContent = 'مقارنة';
+                selectedComponents = selectedComponents.filter(id => id !== componentId);
+            } else {
+                // Add to comparison (max 3)
+                if (selectedComponents.length < 3) {
+                    this.classList.add('selected');
+                    this.textContent = 'إزالة';
+                    selectedComponents.push(componentId);
+                } else {
+                    alert('يمكنك مقارنة 3 مكونات كحد أقصى');
+                }
+            }
+            
+            // Update comparison table
+            updateComparisonTable();
+            
+            // Open modal if there are selected components
+            if (selectedComponents.length > 0) {
+                openModal();
+            } else {
+                closeModalFunc();
+            }
+        });
+    });
+    
+    // Update comparison table content
+    function updateComparisonTable() {
+        // This is a simplified version - in a real app you would fetch more detailed data
+        let tableHTML = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>الميزة</th>
+                        ${selectedComponents.map(id => `<th>المكون ${id}</th>`).join('')}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>السعر</td>
+                        ${selectedComponents.map(id => {
+                            const card = document.querySelector(`.compare-btn[data-id="${id}"]`).closest('.component-card');
+                            return `<td>${card.querySelector('.component-price').textContent}</td>`;
+                        }).join('')}
+                    </tr>
+                    <tr>
+                        <td>الوصف</td>
+                        ${selectedComponents.map(id => {
+                            const card = document.querySelector(`.compare-btn[data-id="${id}"]`).closest('.component-card');
+                            return `<td>${card.querySelector('.component-desc').textContent.substring(0, 100)}...</td>`;
+                        }).join('')}
+                    </tr>
+                </tbody>
+            </table>
+        `;
+        
+        comparisonTable.innerHTML = tableHTML;
+    }
+    
+    // Close modal when clicking X
+    closeModal.addEventListener('click', closeModalFunc);
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModalFunc();
+        }
+    });
+    
+    // Animation for component cards
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    componentCards.forEach((card, index) => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        observer.observe(card);
+    });
+});
+    </script>
+</body>
+</html>

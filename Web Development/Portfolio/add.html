@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced FCW System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #008b77;
+            --primary-light:#008b77 ;
+            --secondary: #2c3e50;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: var(--light);
+        }
+        
+        /* FCW Section - Enhanced */
+        .fcw-section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fcw-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(0, 180, 160, 0.05) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header with Animated Underline */
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+            transition: all 0.5s ease;
+        }
+        
+        .section-header:hover h2::after {
+            width: 120px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary));
+        }
+        
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Content Layout - Side by Side */
+        .fcw-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        
+        /* Text Content with Floating Animation */
+        .text-content {
+            flex: 1;
+            min-width: 300px;
+            animation: floatIn 1s ease-out;
+        }
+        
+        @keyframes floatIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .text-content h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .text-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-light);
+            border-radius: 2px;
+        }
+        
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        /* Feature List with Hover Effects - Modified for expandable */
+        .feature-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 15px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .feature-header {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+        
+        .feature-header:hover {
+            background-color: #f0fdfa;
+        }
+        
+        .feature-header i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            min-width: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-header.active i {
+            transform: rotate(90deg);
+        }
+        
+        .feature-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .feature-details-content {
+            padding: 15px 0;
+        }
+        
+        /* Tech Details - Glass Morphism Effect */
+        .tech-details {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .tech-details:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+            border-color: rgba(0, 139, 119, 0.3);
+        }
+        
+        .tech-details h4 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tech-details h4::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .tech-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .tech-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-point:hover {
+            transform: scale(1.03);
+        }
+        
+        .tech-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 139, 119, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .tech-point p {
+            font-size: 1rem;
+            color: #555;
+            padding-top: 5px;
+        }
+        
+        /* Image Gallery - Side by Side with Parallax Effect */
+        .image-gallery {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            perspective: 1000px;
+        }
+        
+        .main-image, .secondary-image {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            height: fit-content;
+        }
+        
+        .main-image:hover, .secondary-image:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .main-image::before, .secondary-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+        
+        .feature-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.5s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-image:hover .feature-image {
+            transform: scale(1.02);
+        }
+        
+        .image-caption {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .image-caption::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-light);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .main-image:hover .image-caption::after,
+        .secondary-image:hover .image-caption::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Diagram Section with Floating Elements - Modified for expandable */
+        .fcw-diagram {
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .fcw-diagram::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 180, 160, 0.1) 0%, transparent 70%);
+        }
+        
+        .fcw-diagram h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .fcw-diagram h3::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .fcw-diagram h3:hover::after {
+            width: 100px;
+        }
+        
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .diagram-container.active {
+            max-height: 1000px;
+            margin-top: 30px;
+        }
+        
+        .usecase-diagram {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .usecase-diagram:hover {
+            transform: perspective(1000px) rotateX(5deg) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .diagram-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 20px;
+            background-color: var(--white);
+            border-radius: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .legend-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .color-box {
+            width: 25px;
+            height: 25px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+        
+        .color-box.detection {
+            background-color: #e3f2fd;
+            border: 2px solid var(--primary);
+            animation: pulse 2s infinite;
+        }
+        
+        .color-box.analysis {
+            background-color: #e8f5e9;
+            border: 2px solid var(--primary);
+            animation: pulse 2s infinite 0.5s;
+        }
+        
+        .color-box.alert {
+            background-color: #ffebee;
+            border: 2px solid var(--primary);
+            animation: pulse 2s infinite 1s;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* EEBL Section Styles */
+        .eebl-section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .eebl-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(230, 57, 70, 0.05) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        /* Emergency Scenario List - Modified for expandable */
+        .scenario-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .scenario-list li {
+            margin-bottom: 15px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .scenario-header {
+            padding: 15px 20px 15px 50px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .scenario-header:hover {
+            background-color: #fff5f5;
+        }
+        
+        .scenario-header::before {
+            content: '!';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .scenario-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 20px;
+            background-color: #fff9f9;
+        }
+        
+        .scenario-details-content {
+            padding: 15px 0;
+        }
+        
+        /* Technical Implementation Cards */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .tech-card {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .tech-card h4 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tech-card h4 i {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        /* Image Gallery - Emergency Style */
+        .eebl-image {
+            background-color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all 0.4s ease;
+            border-bottom: 4px solid var(--primary);
+        }
+        
+        .eebl-image:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .eebl-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        /* EEBL Use Case Diagram Section - Modified for expandable */
+        .eebl-diagram {
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            margin-top: 50px;
+        }
+        
+        .eebl-diagram h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .eebl-diagram h3::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #ff758f);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .eebl-diagram h3:hover::after {
+            width: 100px;
+        }
+        
+        .eebl-diagram-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .eebl-diagram-container.active {
+            max-height: 1000px;
+            margin-top: 30px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2.4rem;
+            }
+            
+            .fcw-diagram, .eebl-diagram {
+                padding: 40px 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .fcw-section, .eebl-section {
+                padding: 70px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .text-content h3 {
+                font-size: 1.7rem;
+            }
+            
+            .tech-points {
+                grid-template-columns: 1fr;
+            }
+            
+            .fcw-diagram h3, .eebl-diagram h3 {
+                font-size: 1.7rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .fcw-section, .eebl-section {
+                padding: 50px 0;
+            }
+            
+            .section-header {
+                margin-bottom: 50px;
+            }
+            
+            .feature-header, .scenario-header {
+                padding: 12px 15px 12px 45px;
+            }
+            
+            .tech-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .legend-item {
+                padding: 8px 15px;
+            }
+            
+            .fcw-diagram, .eebl-diagram {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="fcw-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>1-Forward Collision Warning (FCW)</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">Advanced collision prediction system for enhanced road safety</p>
+            </div>
+    
+            <div class="fcw-content">
+                <div class="text-content">
+                    <h3>Collision Prevention Technology</h3>
+                    <p>FCW warns the driver of an impending collision between the Host Vehicle (HV) front-end and a Remote Vehicle (RV) rear-end. This collision scenario occurs when:</p>
+                    
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-header">
+                                <i class="fas fa-chevron-right"></i>
+                                <span>Same Direction Travel</span>
+                            </div>
+                            <div class="feature-details">
+                                <div class="feature-details-content">
+                                    <p>Both HV and RV must be traveling in the same direction for FCW to activate. The system uses directional data from vehicle sensors and GPS to confirm alignment.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-header">
+                                <i class="fas fa-chevron-right"></i>
+                                <span>Lane Alignment</span>
+                            </div>
+                            <div class="feature-details">
+                                <div class="feature-details-content">
+                                    <p>The Target Classification (TC) Module analyzes lane positioning to determine if both vehicles are in the same lane. This is critical for accurate collision prediction.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-header">
+                                <i class="fas fa-chevron-right"></i>
+                                <span>Relative Speed Conditions</span>
+                            </div>
+                            <div class="feature-details">
+                                <div class="feature-details-content">
+                                    <p>FCW activates when the RV is either stopped, decelerating, or moving slower than the HV. The system calculates time-to-collision (TTC) based on relative speeds.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+    
+                    <div class="tech-details">
+                        <h4>Technical Implementation</h4>
+                        <p>The system utilizes Target Classification (TC) Module outputs to determine lane alignment and calculates Time-To-Collision (TTC) based on:</p>
+                        <div class="tech-points">
+                            <div class="tech-point">
+                                <div class="tech-icon"><i class="fas fa-project-diagram"></i></div>
+                                <p>Longitudinal offset from TC Module</p>
+                            </div>
+                            <div class="tech-point">
+                                <div class="tech-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <p>Real-time vehicle dynamics data</p>
+                            </div>
+                            <div class="tech-point">
+                                <div class="tech-icon"><i class="fas fa-clock"></i></div>
+                                <p>Calibrated threshold values</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="image-gallery">
+                    <div class="main-image">
+                        <img src="fcw1.jpg" alt="FCW Zone Visualization" class="feature-image">
+                        <p class="image-caption">FCW Zone Detection</p>
+                    </div>
+                    <div class="secondary-image">
+                        <img src="fcw2.jpg" alt="FCW Alert Example" class="feature-image">
+                        <p class="image-caption">Scenario For FCW</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="fcw-diagram">
+                <h3 class="diagram-toggle">FCW System Use Case</h3>
+                <div class="diagram-container">
+                    <img src="fcw usecase.jpg" alt="FCW Use Case Diagram" class="usecase-diagram">
+                    <div class="diagram-legend">
+                        <div class="legend-item">
+                            <div class="color-box detection"></div>
+                            <span>Object Detection</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box analysis"></div>
+                            <span>Risk Analysis</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box alert"></div>
+                            <span>Driver Alert</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="eebl-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>2-Electronic Emergency Brake Light (EEBL)</h2>
+                <p class="section-subtitle">Advanced warning system for hard-braking scenarios when visual brake lights are obscured</p>
+            </div>
+    
+            <div class="eebl-content">
+                <div class="text-content">
+                    <h3>Emergency Braking Alert System</h3>
+                    <p>The EEBL system addresses dangerous scenarios where a Remote Vehicle (RV) ahead brakes hard, but its brake lights are not visible to the Host Vehicle (HV) due to obstructed views from intermediate vehicles.</p>
+                    
+                    <ul class="scenario-list">
+                        <li>
+                            <div class="scenario-header">
+                                RV is ahead and in the same lane as HV
+                            </div>
+                            <div class="scenario-details">
+                                <div class="scenario-details-content">
+                                    <p>The system first confirms that the RV is positioned ahead of the HV in the same travel lane using GPS and sensor data. This spatial relationship is fundamental for EEBL activation.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="scenario-header">
+                                Other vehicles between HV and RV obscure visibility
+                            </div>
+                            <div class="scenario-details">
+                                <div class="scenario-details-content">
+                                    <p>EEBL is specifically designed for situations where intervening vehicles block the HV driver's view of the RV's brake lights. The system detects these visual obstructions through sensor analysis.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="scenario-header">
+                                RV executes hard braking (deceleration exceeds threshold)
+                            </div>
+                            <div class="scenario-details">
+                                <div class="scenario-details-content">
+                                    <p>SAE J2735 standard defines hard braking as deceleration exceeding -0.4 g (-3.92 m/s²). The system monitors RV acceleration values transmitted via BSM messages to detect emergency braking events.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="scenario-header">
+                                No direct line of sight to RV's brake lights from HV
+                            </div>
+                            <div class="scenario-details">
+                                <div class="scenario-details-content">
+                                    <p>When the system determines that the HV driver cannot see the RV's brake lights directly (due to obstructions), it triggers the EEBL warning to compensate for this visibility limitation.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+    
+                    <div class="tech-implementation">
+                        <h4>Technical Implementation</h4>
+                        <div class="tech-grid">
+                            <div class="tech-card">
+                                <h4><i class="fas fa-car-crash"></i> Collision Detection</h4>
+                                <p>Determines if RV is in same lane and direction as HV using BSM data</p>
+                            </div>
+                            <div class="tech-card">
+                                <h4><i class="fas fa-tachometer-alt"></i> Deceleration Analysis</h4>
+                                <p>Monitors RV acceleration values from DF_BSMcoreData frame</p>
+                            </div>
+                            <div class="tech-card">
+                                <h4><i class="fas fa-exclamation-triangle"></i> Warning Trigger</h4>
+                                <p>Issues alert when deceleration exceeds calibrated threshold</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="image-gallery">
+                    <div class="eebl-image">
+                        <img src="eebl1.jpg" alt="EEBL Scenario Visualization">
+                        <p class="image-caption"> EEBL Target classification zones</p>
+                    </div>
+                    <div class="eebl-image">
+                        <img src="eebl2.jpg" alt="EEBL Alert Display">
+                        <p class="image-caption">Scenario for EEBL</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="eebl-diagram">
+                <h3 class="eebl-diagram-toggle">EEBL System Use Case</h3>
+                <div class="eebl-diagram-container">
+                    <img src="eebl usecase.jpg" alt="EEBL Use Case Diagram" class="usecase-diagram">
+                    <div class="diagram-legend">
+                        <div class="legend-item">
+                            <div class="color-box detection"></div>
+                            <span>Danger Detection</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box transmission"></div>
+                            <span>Data Transmission</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box alert"></div>
+                            <span>Emergency Alert</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Feature list expand/collapse functionality
+        document.querySelectorAll('.feature-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const featureItem = header.parentElement;
+                const details = featureItem.querySelector('.feature-details');
+                
+                // Toggle active class on header
+                header.classList.toggle('active');
+                
+                // Toggle the details visibility
+                if (header.classList.contains('active')) {
+                    details.style.maxHeight = details.scrollHeight + 'px';
+                } else {
+                    details.style.maxHeight = '0';
+                }
+                
+                // Close other open items in the same list
+                const parentList = featureItem.parentElement;
+                parentList.querySelectorAll('.feature-header').forEach(otherHeader => {
+                    if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                        otherHeader.classList.remove('active');
+                        const otherDetails = otherHeader.parentElement.querySelector('.feature-details');
+                        otherDetails.style.maxHeight = '0';
+                    }
+                });
+            });
+        });
+        
+        // Scenario list expand/collapse functionality
+        document.querySelectorAll('.scenario-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const scenarioItem = header.parentElement;
+                const details = scenarioItem.querySelector('.scenario-details');
+                
+                // Toggle the details visibility
+                if (details.style.maxHeight === '0px' || !details.style.maxHeight) {
+                    details.style.maxHeight = details.scrollHeight + 'px';
+                } else {
+                    details.style.maxHeight = '0';
+                }
+                
+                // Close other open items in the same list
+                const parentList = scenarioItem.parentElement;
+                parentList.querySelectorAll('.scenario-details').forEach(otherDetails => {
+                    const otherItem = otherDetails.parentElement;
+                    if (otherItem !== scenarioItem && otherDetails.style.maxHeight !== '0px') {
+                        otherDetails.style.maxHeight = '0';
+                    }
+                });
+            });
+        });
+        
+        // Diagram toggle functionality
+        document.querySelectorAll('.diagram-toggle, .eebl-diagram-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                let container;
+                if (toggle.classList.contains('diagram-toggle')) {
+                    container = toggle.nextElementSibling;
+                } else {
+                    container = toggle.parentElement.querySelector('.eebl-diagram-container');
+                }
+                
+                container.classList.toggle('active');
+                
+                // Set the max-height based on the content
+                if (container.classList.contains('active')) {
+                    container.style.maxHeight = container.scrollHeight + 'px';
+                } else {
+                    container.style.maxHeight = '0';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

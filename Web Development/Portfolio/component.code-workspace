@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../component"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../ADAS V2V INTERFACE"
+		}
+	],
+	"settings": {}
+}

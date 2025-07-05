@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../update"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "codeben"
+	}
+}

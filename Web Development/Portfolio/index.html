@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADAS V2V WEBSITE</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="logo-container">
+      <img style="width: 35px; height: 35px;" src="logo.png" alt="Logo" class="sidebar-logo-img">
+      <a style="color: #008b77;" href="#home" class="sidebar-brand-name">LANELOONS</a>
+    </div>
+
+
+    <nav class="navbar" id="navbar">
+
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#custom-section">System Architecture</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#component">Component</a>
+      <a href="#pcb">Pcb&Models </a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+  </header>
+  <!-- 🔥 الخلفية الشفافة - يضاف بعد الـ header -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- 🔥 الشريط الجانبي الاحترافي - يضاف بعد الـ header -->
+<div class="mobile-sidebar" id="mobileSidebar">
+  <!-- رأس الشريط الجانبي -->
+  <div class="sidebar-header">
+    <div class="sidebar-logo-container">
+      <img src="logo.png" alt="Logo" class="sidebar-logo-img">
+      <a href="#home" class="sidebar-brand-name">LANELOONS</a>
+    </div>
+    <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="إغلاق القائمة">
+      <i class='bx bx-x'></i>
+    </button>
+  </div>
+
+  <!-- قائمة التنقل -->
+  <nav class="sidebar-navigation">
+    <a href="#home" class="sidebar-nav-link active">
+      <i class='bx bx-home'></i>
+      <span>Home</span>
+    </a>
+    <a href="#about" class="sidebar-nav-link">
+      <i class='bx bx-info-circle'></i>
+      <span>About</span>
+    </a>
+    <a href="#custom-section" class="sidebar-nav-link">
+      <i class='bx bx-cog'></i>
+      <span>System Architecture</span>
+    </a>
+    <a href="#roadmap" class="sidebar-nav-link">
+      <i class='bx bx-map'></i>
+      <span>Roadmap</span>
+    </a>
+    <a href="#component" class="sidebar-nav-link">
+      <i class='bx bx-chip'></i>
+      <span>Component</span>
+    </a>
+     <a href="#pcb" class="sidebar-nav-link">
+      <i class="bx bx-up-arrow-alt"></i>
+      <span>Pcb & Models</span>
+    </a>
+    <a href="#team" class="sidebar-nav-link">
+      <i class='bx bx-group'></i>
+      <span>Team</span>
+    </a>
+    <a href="#contact" class="sidebar-nav-link">
+      <i class='bx bx-phone'></i>
+      <span>Contact</span>
+    </a>
+   
+  </nav>
+
+  <!-- أسفل الشريط الجانبي -->
+  <div class="sidebar-footer">
+    <p class="sidebar-footer-text">Connect with us</p>
+    <div class="sidebar-social-icons">
+      <a href="https://www.facebook.com/share/15r6m5fziv/?mibextid=qi2Omg" class="sidebar-social-icon" aria-label="Facebook">
+        <i class='bx bxl-facebook'></i>
+      </a>
+      <a href="#" class="sidebar-social-icon" aria-label="Twitter">
+        <i class='bx bxl-twitter'></i>
+      </a>
+      <a href="#" class="sidebar-social-icon" aria-label="Instagram">
+        <i class='bx bxl-instagram-alt'></i>
+      </a>
+      <a href="#" class="sidebar-social-icon" aria-label="GitHub">
+        <i class='bx bxl-github'></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+  <!-- Home Section -->
+  <section class="home" id="home">
+    <div class="video-overlay"></div>
+    <video autoplay muted loop id="background-video">
+      <source src="video_2025-01-31_18-13-28.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="home-content">
+      <h1>Vehicle TO Vehicle Communication<span>(ADAS)</span></h1>
+      <p>Advanced Driver Assistance System based on Vehicle-to-Vehicle (V2V) communication technology.</p>
+      <div class="social-media">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-instagram-alt'></i></a>
+        <a href="#"><i class='bx bxl-github'></i></a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="about" class="about section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>About </h2>
+    </div><!-- End Section Title -->
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+          <p>
+            Advanced Driver Assistance System (ADAS) based on Vehicle-to-Vehicle (V2V) communication
+            technology.
+            This system provides a safer and smarter driving environment by enhancing connectivity
+            and cooperation between vehicles on the road.
+            It reduces accidents, improves traffic flow, and enhances the overall driving
+            experience.
+            The automation levels in this system are classified based on autonomous driving
+            standards,
+            ranging from full human control to complete automation,
+            with a focus on improving emergency response and real-time road monitoring.
+          </p>
+          <ul class="list">
+            <li><i class="bi bi-check2-circle"></i> <span>Improved Road Safety.</span></li>
+            <li><i class="bi bi-check2-circle"></i> <span>Enhanced Traffic Flow.</span></li>
+            <li><i class="bi bi-check2-circle"></i> <span>Faster Emergency Response.</span></li>
+            <li><i class="bi bi-check2-circle"></i> <span>Seamless Interaction Between Smart
+                Vehicles.</span></li>
+          </ul>
+        </div>
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+          <p>In our project, we focus on developing a system that integrates ADAS and V2V technologies
+            to provide innovative solutions such as Forward Collision Warning (FCW), Blind Spot
+            Warning,
+            Intersection Movement Assist (IMA),Don't Pass Warning (DNPW),
+            Driver Monitoring System(DMS) and Traffic Sign Recognition(DMS) .
+            These systems are implemented using a range of hardware components,
+            including GPS sensors, ESP32 modules, display screens, distance-measuring sensors,
+            and intelligent algorithms for real-time data processing and decision-making.</p>
+          <a href="read.html"><button class="btn1">Read More &#8594;</button></a>
+          <!-- السهم يشير لليمين -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="custom-section" >
+    <div style="max-width: 1200px; margin: auto; font-family: Arial, sans-serif;font-size:medium;">
+      <div style="background-color: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden;">
+        <!-- الصورة مع تعديل الحجم -->
+        <img src="archticture.jpg" alt="ADAS System" 
+             style="width: 100%; height: auto; max-height: 300px; object-fit: contain; display: block; border-bottom: 1px solid #eee;">
+        
+        <!-- محتوى النص -->
+        <div style="padding: 25px;">
+          <h2 style="color: #008b77; margin-top: 0; text-align: left;">About System Archticture
+          </h2>
+          
+          <p style="color: #555; line-height: 1.6; text-align: left; margin-bottom: 20px;">
+            This component diagram illustrates the infrastructure of the intelligent ADAS system based on Vehicle-to-Vehicle (V2V) communication technology. The system consists of:
+          </p>
+          
+          <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 20px;">
+            <!-- Communication Interfaces Section -->
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+              <h3 style="color: #008b77; margin-top: 0; margin-bottom: 10px;">Communication Interfaces:</h3>
+              <ul style="color: #2c3e50; margin: 0; padding-left: 20px;">
+                <li style="margin-bottom: 8px;">HTTPS & Web Socket for server/cloud communication</li>
+                <li style="margin-bottom: 8px;">ESP-NOW for ESP32 module communication</li>
+                <li style="margin-bottom: 8px;">USB for sensor connections</li>
+                <li>SPI for display connections</li>
+              </ul>
+            </div>
+          
+            <!-- Core Components Section -->
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+              <h3 style="color: #008b77; margin-top: 0; margin-bottom: 10px;">Core Components:</h3>
+              <ul style="color: #2c3e50; margin: 0; padding-left: 20px;">
+                <li style="margin-bottom: 8px;">Central processing unit (Raspberry Pi 4 Model B)</li>
+                <li style="margin-bottom: 8px;">Raspberry Pi Camera v2 for computer vision</li>
+                <li style="margin-bottom: 8px;">10 DOF IMU sensor (MPU6050 + HM C5883L + BMP08) for motion measurement</li>
+                <li style="margin-bottom: 8px;">ESP32 modules for motor control and user interface</li>
+                <li style="margin-bottom: 8px;">Servo motor and LCD display</li>
+                <li>Firebase SDK for data storage and analytics</li>
+              </ul>
+            </div>
+          
+            <!-- Control Modules Section -->
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+              <h3 style="color: #008b77; margin-top: 0; margin-bottom: 10px;">Control Modules:</h3>
+              <ul style="color: #2c3e50; margin: 0; padding-left: 20px;">
+                <li style="margin-bottom: 8px;">ATMEGA32 for movement direction control (Left/Right)</li>
+                <li>Motor Driver unit</li>
+              </ul>
+            </div>
+          </div>
+          
+         
+      </div>
+    </div>
+  </section> <br>
+  
+  
+    <section id="roadmap" class="timeline-section" >
+      <!-- Section Title -->
+      <section class="road-section" id="roadmap">
+        <h2 class="road-title">Tech Explorer: Your Journey Starts Here</h2>
+        <p class="road-description">
+          Welcome to your roadmap through the world of technology! From embedded systems to web development and AI —
+          your journey starts here.
+        </p>
+      </section>
+
+      <div class="timeline" >
+        <div class="containers left-containers" style="z-index: 2;">
+          <img src="cpu (1).png" alt="Embedded Systems">
+          <div class="text-box">
+            <h2>Embedded Systems</h2>
+            <small></small>
+            <p>Designing and programming hardware systems.</p>
+            <a href="embeded.html" class="show-button">Show <i class='bx bx-chevron-right'></i></a>
+            <span class="left-containers-arrow"></span>
+          </div>
+        </div>
+
+        <div class="containers right-containers" style="z-index: 2;">
+          <img src="ai.png" alt="Artificial Intelligence">
+          <div class="text-box">
+            <h2>Artificial Intelligence</h2>
+            <small></small>
+            <p>Artificial Intelligence (AI) is a multidisciplinary field of computer science focused on designing and
+              developing intelligent systems capable of performing tasks that typically require human cognition.</p>
+            <a href="ai.html" class="show-button">Show <i class='bx bx-chevron-right'></i></a>
+            <span class="right-containers-arrow"></span>
+          </div>
+        </div>
+
+        <div class="containers left-containers" style="z-index: 2;">
+          <img src="app-development.png" alt="Web Development">
+          <div class="text-box">
+            <h2>Web Development</h2>
+            <small></small>
+            <p>web technologies play a fundamental role in
+              building intelligent systems capable of real-time interaction with users.</p>
+            <a href="web.html" class="show-button">Show <i class='bx bx-chevron-right'></i></a>
+            <span class="left-containers-arrow"></span>
+          </div>
+        </div>
+
+       
+        <div class="containers right-containers" style="z-index: 2;">
+          <img src="technology.png" alt="Cybersecurity">
+          <div class="text-box">
+            <h2>Cybersecurity</h2>
+            <small></small>
+            <p>As Network Security Lead, I designed and secured the V2V communication network, implementing robust encryption and protection systems for safe vehicle-to-vehicle data exchange..</p>
+            <a href="Cyber.html" class="show-button">Show <i class='bx bx-chevron-right'></i></a>
+            <span class="right-containers-arrow"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="table-section" id="component">
+      <section class="component">
+
+        <h2 class="table-title" style=" content: '📊 ';">Component List: Explore Key Hardware Details</h2>
+      </section>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>shape</th>
+              <th>Function</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="component"
+                  href="https://electra.store/product/raspberry-pi-5-computer-model-b-8gb-ram/">Raspberry
+                  pi 5 - 8 GB</a></td>
+              <td><img src="rasppery.webp" alt="Component 1"></td>
+              <td>The Raspberry Pi 5 Model B is a powerful single-board computer, ideal for projects that
+                require high performance, enhanced connectivity, and ample memory. With 8GB of RAM, this
+                model offers faster multitasking capabilities, making it suitable for more demanding
+                applications such as coding, data analysis, and media streaming.</td>
+           
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://electra.store/product/raspberry-pi-5-computer-model-b-8gb-ram/">Raspberry
+                  pi camera module 5MP</a></td>
+              <td><img src="raspery-camera.webp" alt="Component 2"></td>
+              <td>The Raspberry Pi Camera Board plugs directly into the CSI connector on the Raspberry Pi.
+                It’s able to deliver a crystal clear 5MP resolution image, or 1080p HD video recording
+                at
+                30fps!</td>
+             
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://electra.store/product/raspberry-pi-5-computer-model-b-8gb-ram/">ATMEGA32</a>
+              </td>
+              <td><img src="atmega32.webp" alt="Component 3"></td>
+              <td>The ATmega32A is a low power, CMOS 8-bit microcontrollers based on the AVR® enhanced
+                RISC
+                architecture. The ATmega32A is a 40/44-pins device with 32 KB Flash, 2 KB SRAM and 1 KB
+                EEPROM. By executing instructions in a single clock cycle, the devices achieve CPU
+                throughput approaching one million instructions per second (MIPS) per megahertz,
+                allowing
+                the system designer to optimize power consumption versus processing speed.
+              </td>
+             
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://electra.store/product/raspberry-pi-5-computer-model-b-8gb-ram/">ESP-32</a>
+              </td>
+              <td><img src="esp32.webp" alt="Component 3"></td>
+              <td>This ESP32 development board include both wireless Wi-Fi and Bluetooth capability in one
+                board. It is powered by the latest powerful and low power consumption ESP-WROOM-32
+                module.
+                This is the 30 pin version. One of the advantages of the ESP32 is that it has a lot more
+                GPIOs than the ESP8266. Due to its Small volume, it can be easily Embedded in other
+                products.
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://store.fut-electronics.com/products/ublox-neo-6m-gps-module?_pos=1&_sid=724c5dc8a&_ss=r">Ublox
+                  NEO-6M</a></td>
+              <td><img src="uplox.webp" alt="Component 3"></td>
+              <td>Ublox makes good gps. The Ublox NEO-7M gps engine on this board is a quite good one,
+                with
+                high precision binary output. It has also high sensitivity for indoor applications. The
+                gps
+                module have a battery for power backup and EEprom for storing configuration settings.
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://store.fut-electronics.com/products/10-dof-imu-mpu6050-compass?_pos=3&_sid=f373d49bb&_ss=r">10
+                  DOF IMU (MPU6050+HMC5883L+BMP08)</a></td>
+              <td><img src="10dof.webp" alt="Component 3"></td>
+              <td>This board combines 5 sensors, It includes MPU605 (3 axis Gyro and 3 axis
+                Accelerometer),
+                HMC5883L (3-Axis Digital Compass) and BMP085 (Barometric Pressure Sensor). They are all
+                accessible via I2C bus.
+                Voltage supply range from 3.3 to 5V, it can be used with arduino or micro-controller.
+                The
+                IMU sensor can be used in wide applications including direction control, angle
+                measurements
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component" href="https://electra.store/product/lcd-4x20-blue/">Character LCD
+                  20×4</a></td>
+              <td><img src="lcd.jpg" alt="Component 3"></td>
+              <td> CM-22455 LCD,Light Source and Display
+              </td>
+           
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://store.fut-electronics.com/products/charcter-lcd-16x2-with-serial-interface-iic?_pos=2&_sid=9536bfd47&_ss=r">Serial
+                  I2C LCD Daughter Board Module</a></td>
+              <td><img src="spi lcd.webp" alt="Component 3"></td>
+              <td> The LCD backpacks serve to solve the main problem with using LCD which is the large
+                number
+                of pins required to control the LCD. This is not only annoying but also occupy many
+                useful
+                pins of your Arduino or microcontroller that might be saved for another application.
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://electra.store/product/ultrasonic-distance-sensor-hc-sr04/">Ultrasonic
+                  Sensor Module</a></td>
+              <td><img src="ultrasonic.webp" alt="Component 3"></td>
+              <td> Distance measurement sensor is a low-cost full functionality solution for distance
+                measurement applications.
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://electra.store/product/usb-asp-avr-programming-device-for-atmel-processors/">USBASP
+                  AVR Programmer </a></td>
+              <td><img src="avrusb.webp" alt="Component 3"></td>
+              <td>USB ASP AVR Programming Device for ATMEL Processors,Allows you to read or write the
+                microcontroller EEPROM, firmware, fuse bits and lock bits
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://electra.store/product/robot-chassis-4-gear-motors-4-wheels-random-color-chassis/">Car
+                  Body </a></td>
+              <td><img src="body.jpg" alt="Component 3"></td>
+              <td>Robot Chassis (4 Gear Motors + 4 Wheels) Random color Chassis
+              </td>
+             
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://electra.store/product/robot-chassis-4-gear-motors-4-wheels-random-color-chassis/">Pressure-Sensitive
+                  Conductive Sheet</a></td>
+              <td><img src="sheet.webp" alt="Component 3"></td>
+              <td>This conductive pressure sensitive material (also known as "Velostat" or "Linqstat") is
+                a
+                good addition for your wearable/sensor hacking toolkit. It is pressure-sensitive, by
+                squeezing, it will reduce the resistance. This make it good choice for making flexible
+                sensors.
+              </td>
+             
+            </tr>
+            <tr>
+              <td><a class="component" href="https://electra.store/product/active-buzzer-5v/">Buzzer</a>
+              </td>
+              <td><img src="buzzer.jpg" alt="Component 3"></td>
+              <td>A small buzzer designed to operate at 5V is a compact electronic device that emits sound
+                when voltage is applied. These buzzers are widely used in various applications like
+                alarms,
+                notifications, and electronic projects due to their small size and ease of integration.
+                Here’s a detailed description of a small 5V buzzer
+              </td>
+            
+            </tr>
+            <tr>
+              <td><a class="component" href="https://electra.store/product/breadboard-400-tie-point/">Breadboard 400 Tie
+                  Point</a></td>
+              <td><img src="board.webp" alt="Component 3"></td>
+              <td>Breadboard 400 Tie Point
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component" href="https://electra.store/product/breadboard-840-tie-point/">Breadboard 840 Tie
+                  Point</a></td>
+              <td><img src="breadboard.webp" alt="Component 3"></td>
+              <td>Breadboard 840 Tie Point
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://store.fut-electronics.com/products/micro-servo-motor-1-3kg-cm?_pos=1&_sid=db8b4963e&_ss=r">Servo
+                  Motor</a></td>
+              <td><img src="servo.webp" alt="Component 3"></td>
+              <td>Unlike dc motors, with servo motors you can position the motor shaft at a specific
+                position
+                (angle) using control signal. The motor shaft will hold at this position as long as the
+                control signal not changed. This is very useful for controlling robot arms, unmanned
+                airplanes control surface or any object that you want it to move at certain angle and
+                stay
+                at its new position
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component" href="">Wires</a></td>
+              <td><img src="wires.webp" alt="Component 3"></td>
+              <td>These are 200 mm long jumpers with male connectors on both ends. Use these to jumper
+                from
+                any female header on any board, to any other female header. Combine these with our
+                female to
+                female jumpers to create a male to female jumper
+              </td>
+              
+            </tr>
+            <tr>
+              <td><a class="component"
+                  href="https://store.fut-electronics.com/products/18650-lithium-ion-rechargeable-high-quality-battery-3-7v-1200-mah?_pos=9&_sid=2c83d9756&_ss=r">18650
+                  Lithium Ion Rechargeable High Quality Battery (3.7V – 1200 mAH)</a></td>
+              <td><img src="battery.webp" alt="Component 3"></td>
+              <td> High quality 18650 rechargeable Lithium Ion battery with 3.7V and 1200 MAH (mill ampere
+                per
+                hour) charge rate.
+              </td>
+             
+            </tr>
+            <tr>
+              <td><a class="component" href="https://electra.store/product/l298-red-module/">L298 Motor
+                  Driver</a></td>
+              <td><img src="driver.jpg" alt="Component 3"></td>
+              <td> dual H-bridge motor driver module.
+              </td>
+             
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="gallery-section" id="pcb">
+      <!-- Header Bar -->
+      <div class="header-bar" onclick="toggleGallery()">
+          <div class="header-content">
+              <h2 class="header-title"> Pcb & Models</h2>
+              <div class="arrow-container" id="arrow-container">
+                  <svg class="arrow-icon" viewBox="0 0 24 24">
+                      <path d="M7 10l5 5 5-5z"/>
+                  </svg>
+              </div>
+          </div>
+      </div>
+
+      <!-- Gallery Content -->
+      <div class="gallery-content" id="gallery-content">
+          <div class="content-inner">
+              <div class="gallery-grid" id="gallery-grid">
+                  <!-- Gallery items will be generated by JavaScript -->
+              </div>
+              
+              <div class="counter">
+                  
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+    <section class="team" id="team">
+      
+      <p class="team-subheading">Meet the team driving innovation and excellence at LaneLoons</p>
+     
+
+      <p class="team-subheading" style="color: #7ff8e6"> Our inspiration for progress</p>
+        <!-- Member 1 -->
+        <div class="team-card-wrapper" style="display: flex;
+        justify-content: center;
+        margin-bottom: 40px; 
+       ">
+          <div class="team-card">
+            <img src="dr-yasser.png" alt="Ahmed Ismail" class="team-photo">
+            <h3>Assist.Prof.Yasser Elawady</h3>
+            <p class="team-role">Adjunct assistant professor at Zewail City of Science</p>
+        
+            <div class="social-icon">
+              <a href="#" target="_blank">
+                <img src="bxl-github.svg" alt="GitHub">
+              </a>
+              <a href="https://facebook.com" target="_blank">
+                <img src="facebook-circle-logo-24.png" alt="Facebook">
+              </a>
+              <a href="https://linkedin.com" target="_blank">
+                <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+              </a>
+            </div>
+          </div>
+        </div> <h2 class="team-heading" style="color: #7ff8e6">TEAM</h2><br>
+
+      <div class="team-container"  > 
+        
+        <div class="team-card">
+          <img src="./team/ahmedismail.webp" alt="Ahmed Ismail" class="team-photo">
+          <h3>Ahmed Ismail</h3>
+          <p class="team-role">Embedded Software Engineer</p>
+
+          <div class="social-icon">
+            <a href="https://github.com/AhmedMohIsmail" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://www.facebook.com/ahmed.mohamed.ismail.357693" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/ahmed-ismail-00b03b2ba/" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="team-card">
+          <img src="./team/mazen.png" alt="Mazen Ahmed" class="team-photo">
+          <h3>Mazen Ahmed</h3>
+          <p class="team-role">AI Engineer</p>
+
+          <div class="social-icon">
+            <a href="https://github.com/mazen-alasas" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://www.facebook.com/share/1H7i4fGouX/" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/mazen-ahmed-alasas-772831244" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="team-card">
+          <img src="./team/nader.webp" alt="Ahmed Nader" class="team-photo">
+          <h3>Ahmed Nader</h3>
+          <p class="team-role">Web Developer Engineer</p>
+
+          <div class="social-icon">
+            <a href="https://github.com/AhmedNaderHQ" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://www.facebook.com/share/1JURvC96xV/" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/ahmed-nader-8a0a2529a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="team-card">
+          <img src="./team/zeyad.webp" alt="Zeyad Mohamed" class="team-photo">
+          <h3>Zeyad Mohamed</h3>
+          <p class="team-role">Cyber Security Engineer</p>
+
+          <div class="social-icon">
+            <a href="https://github.com/zeyad-mohamedd" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://www.facebook.com/share/12JbbEgAqos/" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/ziad-mohamed-759a73240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 5 -->
+        <div class="team-card">
+          <img src="./team/yaser khairy.png" alt="Yaser Khairy" class="team-photo">
+          <h3>Yaser Khairy</h3>
+          <p class="team-role">Embedded Software Engineer</p>
+
+          <div class="social-icon">
+            <a href="https://github.com/YSR48" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://www.facebook.com/yasser.elgafry.2025" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/yasser-elgafary-718bb9250/" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 6 -->
+        <div class="team-card">
+          <img src="./team/abrar.jpg" alt="Abrar Twakal" class="team-photo">
+          <h3>Abrar Twakal</h3>
+          <p class="team-role">Web Developer Engineer</p>
+
+          <div class="social-icon">
+            <a href="#" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://www.facebook.com/abrar.twakal" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/abrar-tawakl-31054a2b4" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 7 -->
+        <div class="team-card">
+          <img src="./team/smaka.png" alt="Asmaa Mohamed" class="team-photo">
+          <h3>Asmaa Mohamed</h3>
+          <p class="team-role">AI Engineer</p>
+
+          <div class="social-icon">
+            <a href="#" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://www.facebook.com/share/1An6UdKyMZ/" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://eg.linkedin.com/in/asmaa-mohamed-06a917248" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 8 -->
+        <div class="team-card">
+          <img src="./team/doaa naser.png" alt="Doaa Naser" class="team-photo">
+          <h3>Doaa Naser</h3>
+          <p class="team-role">Embedded Software Engineer</p>
+
+          <div class="social-icon">
+            <a href="#" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://web.facebook.com/do32.nasser" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/doaa-mosbah/" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 9 -->
+        <div class="team-card">
+          <img src="./team/naira.png" alt="Nauira Mamdoh" class="team-photo">
+          <h3>Nauira Mamdoh</h3>
+          <p class="team-role">AI Engineer</p>
+
+          <div class="social-icon">
+            <a href="#" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://facebook.com" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 10 -->
+        <div class="team-card">
+          <img src="./team/mariam.png" alt="Mariam Ahmed" class="team-photo">
+          <h3>Mariam Ahmed</h3>
+          <p class="team-role">AI Engineer</p>
+
+          <div class="social-icon">
+            <a href="#" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://www.facebook.com/mariam.elyamany.942" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/mariam-elyamany-015910252" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 11 -->
+        <div class="team-card">
+          <img src="./team/esraa shtat.png" alt="Esraa Shtat" class="team-photo">
+          <h3>Esraa Shtat</h3>
+          <p class="team-role">Embedded Software Engineer</p>
+
+          <div class="social-icon">
+            <a href="#" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://facebook.com" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 12 -->
+        <div class="team-card">
+          <img src="./team/hager khaled.png" alt="Hager Khaled" class="team-photo">
+          <h3>Hager Khaled</h3>
+          <p class="team-role">AI Engineer</p>
+
+          <div class="social-icon">
+            <a href="#" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://facebook.com" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 13 -->
+        <div class="team-card">
+          <img src="./team/Hager Eid.jpg" alt="Hagar Basher" class="team-photo">
+          <h3>Hagar Basher</h3>
+          <p class="team-role">Embedded Software Engineer</p>
+
+          <div class="social-icon">
+            <a href="https://github.com/HGRBASHER" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://www.facebook.com/" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/hagar-eid-4b0062219/" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 14 -->
+        <div class="team-card">
+          <img src="./team/salma hamada.png" alt="Salma Hamada" class="team-photo">
+          <h3>Salma Hamada</h3>
+          <p class="team-role">Embedded Software Engineer</p>
+
+          <div class="social-icon">
+            <a href="#" target="_blank">
+              <img src="bxl-github.svg" alt="GitHub">
+            </a>
+            <a href="https://facebook.com" target="_blank">
+              <img src="facebook-circle-logo-24.png" alt="Facebook">
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+              <img src="linkedin-square-logo-24.png" alt="LinkedIn">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+    <div class="connect" id="contact">
+      <span class="big-circle"></span>
+      <img src="shape.png" class="square" alt="" />
+      <div class="form">
+        <div class="contact-info">
+          <h3 class="title">Let's get in touch</h3>
+          <p class="text">
+            Do Not Hesitate to Contact Us
+          </p>
+
+          <div class="infor">
+            <div class="information">
+              <img src="location.png" class="icon" alt="" />
+              <p>Misr Higher Institute for Engineering in Mansoura</p>
+            </div>
+            <div class="information">
+              <img src="email.png" class="icon" alt="" />
+              <p>Laneloons@gmail.com</p>
+            </div>
+            <div class="information">
+              <img src="phone.png" class="icon" alt="" />
+              <p>01157259838</p>
+            </div>
+          </div>
+
+          <div class="social-media">
+            <p style="font-size: 1.5rem;">Connect with us :</p>
+            <div class="social-icon">
+              <a href="https://www.facebook.com/share/15r6m5fziv/?mibextid=qi2Omg">
+                <i class='bx bxl-facebook'></i>
+              </a>
+              <a href="#">
+
+                <i class='bx bxl-twitter'></i>
+
+              </a>
+              <a href="#">
+                <i class='bx bxl-github'></i>
+              </a>
+              <a href="#">
+                <i class="bx bxl-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+
+          <form action="https://api.web3forms.com/submit" method="POST" autocomplete="off">
+            <h3 class="title">Contact us</h3>
+            <input type="hidden" name="access_key" value="3ecfe002-7bdd-41d5-bd13-656fe13235bb">
+            <div class="input-container">
+              <input type="text" name="name" class="input" />
+              <label for="">Username</label>
+              <span>Username</span>
+            </div>
+            <div class="input-container">
+              <input type="email" name="email" class="input" />
+              <label for="">Email</label>
+              <span>Email</span>
+            </div>
+            <div class="input-container">
+              <input type="tel" name="phone" class="input" />
+              <label for="">Phone</label>
+              <span>Phone</span>
+            </div>
+            <div class="input-container textarea">
+              <textarea name="message" class="input"></textarea>
+              <label for="">Message</label>
+              <span>Message</span>
+            </div>
+            <input type="submit" value="Send" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("_TVhTJo9aS0lqztgk"); // ضع الـ Public Key الخاص بك هنا
+      })();
+
+      document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+          .then(function (response) {
+            alert("Message sent successfully!");
+          }, function (error) {
+            alert("Failed to send message.");
+          });
+      });
+    </script>
+    <footer class="footer">
+      <div class="footer-text">
+        <p style="text-align: center; color: #008b77; font-size: large; font-weight: bold;">For More Details About Our ProJect <a href="Final (1) (1) (1)-1.pdf">click here</a></p>
+        <p>Copyright &copy; 2025 | All Rights Reserved.</p>
+      </div>
+
+      <div class="footer-iconTop">
+        <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDn6uUCP8zKV64f3Xwm0Ndodi9pq4teZ5o",
+        authDomain: "adasfeaturev2v.firebaseapp.com",
+        databaseURL: "https://adasfeaturev2v-default-rtdb.firebaseio.com",
+        projectId: "adasfeaturev2v",
+        storageBucket: "adasfeaturev2v.firebasestorage.app",
+        messagingSenderId: "883046654786",
+        appId: "1:883046654786:web:909d616745af0b6cc69edb"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      
+    </script>
+</body>
+
+</html>

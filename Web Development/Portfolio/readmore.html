@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Project Details</title>
+  <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="index.html">About</a>
+  </div>
+
+  <div class="container" id="content">
+    <h2 class="title">Project Objectives</h2>
+    <div class="underline"></div>
+    <div class="content">
+
+      <p style="color: aliceblue; font-size: 1.5rem;">The number of accidents has significantly increased due to driver
+        distraction, fatigue, or boredom,
+        making driving more challenging. With the continuous efforts of the government and the Ministry of
+        Transportation to develop roads and bridges to reduce accidents, improve the driving experience, save
+        time, and shorten distances, we propose a project aimed at reducing risks, saving lives, and making
+        driving safer and more enjoyable for drivers.</p>
+     
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // إضافة التأثير عند تحميل الصفحة
+      setTimeout(() => {
+        document.getElementById("content").classList.add("show");
+      }, 200); // تأخير بسيط لإعطاء تأثير أكثر سلاسة
+    });
+
+    // تأثير الظهور عند التمرير (Scroll)
+    document.addEventListener("scroll", function () {
+      var content = document.getElementById("content");
+      var contentPosition = content.getBoundingClientRect().top;
+      var screenPosition = window.innerHeight / 1.3;
+
+      if (contentPosition < screenPosition) {
+        content.classList.add("show");
+      }
+    });
+  </script>
+
+
+
+
+
+
+  <main>
+    <section style="background-color: aliceblue;" class="system">
+      <h2>The System Includes:</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="dbwn.webp" alt="Do Not Pass Warning">
+          <p>Do Not Pass Warning System</p>
+        </div>
+        <div class="card">
+          <img src="fcw.jpeg" alt="Forward Collision Warning">
+          <p>Forward Collision Warning System</p>
+        </div>
+        <div class="card">
+          <img src="bsw.jpeg" alt="Blind Spot Warning">
+          <p>Blind Spot Warning System</p>
+        </div>
+        <div class="card">
+          <img src="eebl.jpg" alt="Emergency Brake Light">
+          <p>Emergency Electronic Brake Light System</p>
+        </div>
+        <div class="card">
+          <img src="Ima.jpeg" alt="Intersection Movement Assist">
+          <p>Intersection Movement Assist</p>
+        </div>
+        <div class="card">
+          <img src="dfm.jpeg" alt="driver monitoring System ">
+          <p>Driver Monitoring System</p>
+        </div>
+        <div class="card">
+          <img src="dfr.jpeg" alt="driver face Recognition">
+          <p>Driver Face Recognition</p>
+        </div>
+      </div>
+    </section>
+
+   
+      <section class="features">
+        <h2 style="color: aliceblue;">Project Description</h2>
+
+        <article class="feature" data-aos="fade-up">
+          <img src="dbwn.webp" alt="Do Not Pass Warning">
+          <div class="text">
+            <h3>Do Not Pass Warning (DNPW)</h3>
+            <p>
+              This system senses the driver’s condition and alerts them when feeling drowsy or experiencing
+              unstable health conditions, ensuring their safety and that of the passengers.
+            </p>
+          </div>
+        </article>
+
+        <article style="justify-content: start;" class="feature reverse" data-aos="fade-up">
+          <img src="fcw.jpeg" alt="Forward Collision Warning">
+          <div class="text">
+            <h3>Forward Collision Warning (FCW)</h3>
+
+            <p>
+              This system aims to warn the driver of any potential collision with vehicles or obstacles ahead,
+              allowing them to avoid potential accidents by reducing response time.
+            </p>
+          </div>
+
+        </article>
+
+        <article class="feature" data-aos="fade-up">
+          <img src="bsw.jpeg" alt="Blind Spot Warning">
+          <div class="text">
+            <h3>Blind Spot Warning (BSW)</h3>
+            <p>
+              This system alerts the driver to vehicles or obstacles in the blind spot, enhancing safety during
+              lane changes.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature reverse" data-aos="fade-up">
+          <img src="eebl.jpg" alt="Emergency Electronic Brake Light System">
+          <div class="text">
+            <h3>Emergency Electronic Brake Light System (EEBL)</h3>
+            <p>
+              This feature is activated during sudden braking to alert other vehicles on the road, reducing the
+              risk of rear-end collisions.
+            </p>
+          </div>
+
+        </article>
+
+        <article class="feature" data-aos="fade-up">
+          <img src="Ima.jpeg" alt="Intersection Movement Assist">
+          <div class="text">
+            <h3>Intersection Movement Assist (IMA)</h3>
+            <p>
+              This system monitors intersections and alerts the driver to potential hazards, such as oncoming
+              vehicles from the sides.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature reverse" data-aos="fade-up">
+          <img src="dfm.jpeg" alt="Driver Monitoring System">
+          <div class="text">
+            <h3>Driver Monitoring System (DMS)</h3>
+            <p>
+              This system senses the driver’s condition and alerts them when feeling drowsy or experiencing
+              unstable health conditions.
+            </p>
+          </div>
+
+        </article>
+
+        <article class="feature" data-aos="fade-up">
+          <img src="dfr.jpeg" alt="Driver Face Recognition">
+          <div class="text">
+            <h3>Driver Face Recognition (DFR)</h3>
+            <p>
+              This system uses an internal camera to ensure that the person entering the vehicle is the authorized
+              driver.
+            </p>
+          </div>
+        </article>
+
+      </section>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          AOS.init({
+            duration: 1000, // مدة التأثير
+            offset: 100, // متى يبدأ التأثير عند التمرير
+          });
+        });
+      </script>
+    </body>
+
+</html>
+
+<footer class="footer" style="color: aliceblue; text-align: center;">
+  <p>&copy; 2025 Safety Project</p>
+</footer>
+</body>
+
+</html>

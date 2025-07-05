@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced Driver Assistance System Features">
+    <title>ADAS Features Dashboard</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Body styles */
+        body {
+            background-color: #212529;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+            overflow: auto;
+        }
+
+        /* Navbar */
+        .menu_item {
+            align-items: center;
+            height: 93vh;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .nav-item {
+            margin: 50% 0% 50% 0%;
+        }
+
+        .bi {
+            display: inline-block;
+            width: 5vh;
+            height: 5vh;
+            fill: currentColor;
+        }
+
+        /* Navbar */
+        .navbar-brand {
+            width: 14%;
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            background-color: rgba(0, 0, 0, .25);
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+        }
+
+        .topbar {
+            width: 85%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+        }
+
+        #time {
+            font-size: x-large;
+        }
+
+        #date {
+            font-size: smaller;
+        }
+
+        .search_Top {
+            position: relative;
+            width: 400px;
+            margin: 0 10px;
+        }
+
+        .search_Top label {
+            position: relative;
+            width: 100%;
+        }
+
+        .search_Top label input {
+            width: 100%;
+            height: 40px;
+            border-radius: 40px;
+            padding: 5px 20px;
+            padding-left: 35px;
+            font-size: 18px;
+            outline: none;
+            border: 1px solid #333;
+            background-color: #212529;
+            color: #fff;
+        }
+
+        .search_Top label ion-icon {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .user {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .user img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        .header {
+            background-color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-icons i {
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: transform 0.3s;
+        }
+
+        .header-icons i:hover {
+            transform: scale(1.2);
+        }
+
+        /* زر تبديل الوضع */
+        #theme-toggle {
+            background-color: #00bfff;
+            border: none;
+            color: #ffffff;
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #theme-toggle:hover {
+            background-color: #0099cc;
+            transform: scale(1.1);
+        }
+
+        body.dark-mode #theme-toggle {
+            background-color: #222;
+            color: #00bfff;
+        }
+
+        body.dark-mode #theme-toggle:hover {
+            background-color: #444;
+        }
+
+        /* تنسيق الصفحة */
+        .content {
+            padding: 20px;
+            position: absolute;
+            width: calc(100% - 130px);
+            max-width: 90%;
+            left: 125px;
+        }
+
+        .content h2 {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 2rem;
+            background-color: #00bfff;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .feature {
+            background: linear-gradient(135deg, #333, #555);
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .feature img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .feature p {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .feature:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+            transform: scale(1.05);
+        }
+
+        .feature:hover p {
+            color: #00bfff;
+        }
+
+        .toggle-btn {
+            background-color: gray;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* تأثير اهتزاز */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .feature:hover {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        /* تأثير عند التركيز على الزر */
+        #theme-toggle:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #feature-info {
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        #feature-info.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .info-box {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .info-box h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #00bfff;
+        }
+
+        .info-box p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .info-box button {
+            background-color: #00bfff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .info-box button:hover {
+            background-color: #0077aa;
+        }
+
+        #toggle-all-btn {
+            position: absolute;
+            right: 15px;
+            background-color: gray;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        #toggle-all-btn:hover {
+            background-color: #0077aa;
+        }
+
+        .status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .status.green {
+            background-color: #28a745;
+            box-shadow: 0 0 10px #28a745;
+        }
+
+        .status.black {
+            background-color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            body {
+                height: 100vh;
+                overflow: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                width: 100%;
+                max-width: 100%;
+                left: 0px;
+            }
+            
+            .features {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #333;
+            height: 70px;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            background-color: #fff;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .sidebar:hover {
+            width: 220px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .nav-link svg {
+            min-width: 24px;
+            margin-right: 1rem;
+            color: #333;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(0, 102, 204, 0.1);
+            color: #0066cc;
+        }
+
+        .nav-link:hover svg, .nav-link.active svg {
+            color: #0066cc;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 80px;
+            margin-top: 70px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .sidebar:hover ~ .main-content {
+            margin-left: 220px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <img class="navbar-brand" src="assets/images/laneloons-removebg-preview.png" alt="LaneLoons Logo">
+        
+        <div class="topbar">
+            <div class="datatime">
+                <div id="time"></div>
+                <div id="date"></div>
+            </div>
+            
+            <div class="search_Top">
+                <label>
+                    <input type="text" placeholder="Search features...">
+                    <i class="ri-search-line"></i>
+                </label>
+            </div>
+            
+            <div class="user">
+                <img src="https://i.scdn.co/image/ab67616d0000b273f907de96b9a4fbc04accc0d5" alt="User Profile">
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="menu_item">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="index v2 .html">
+                        <i class="ri-home-4-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="features.html">
+                        <i class="ri-apps-2-line"></i>
+                        <span>ADAS Features</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="setting.html">
+                        <i class="ri-settings-3-line"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content">
+            <h2>Supported ADAS Features
+                <button id="toggle-all-btn" data-state="off">Toggle All OFF</button>
+            </h2>
+            
+            <div class="features">
+                <!-- EEBL -->
+                <div class="feature" onclick="showInfo('EEBL', 'Electronic Emergency Brake Light warns following vehicles when hard braking is detected to prevent rear-end collisions.')">
+                    <img src="assets/images/features/EEBLL.png" alt="EEBL">
+                    <p>EEBL</p>
+                    <div class="status green"></div>
+                    <button class="toggle-btn" id="feature1" data-state="off" onclick="toggleButton(this, event)">OFF</button>
+                </div>
+    
+                <!-- FCW -->
+                <div class="feature" onclick="showInfo('FCW', 'Forward Collision Warning detects imminent collisions with vehicles ahead and provides alerts to the driver.')">
+                    <img src="assets/images/features/FCW.png" alt="FCW">
+                    <p>FCW</p>
+                    <div class="status black"></div>
+                    <button class="toggle-btn" id="feature2" data-state="off" onclick="toggleButton(this, event)">OFF</button>
+                </div>
+    
+                <!-- BSW -->
+                <div class="feature" onclick="showInfo('BSW', 'Blind Spot Warning monitors areas not visible in mirrors and alerts when vehicles are detected.')">
+                    <img src="assets/images/features/BSW.jpeg" alt="BSW">
+                    <p>BSW</p>
+                    <div class="status green"></div>
+                    <button class="toggle-btn" id="feature3" data-state="off" onclick="toggleButton(this, event)">OFF</button>
+                </div>
+    
+                <!-- DNPW -->
+                <div class="feature" onclick="showInfo('DNPW', 'Do Not Pass Warning detects unsafe passing conditions and warns the driver.')">
+                    <img src="assets/images/features/DNBW.jpeg" alt="DNPW">
+                    <p>DNPW</p>
+                    <div class="status black"></div>
+                    <button class="toggle-btn" id="feature4" data-state="off" onclick="toggleButton(this, event)">OFF</button>
+                </div>
+    
+                <!-- IMA -->
+                <div class="feature" onclick="showInfo('IMA', 'Intersection Movement Assist warns about potential collisions at intersections.')">
+                    <img src="assets/images/features/IMA.jpg" alt="IMA">
+                    <p>IMA</p>
+                    <div class="status green"></div>
+                    <button class="toggle-btn" id="feature5" data-state="off" onclick="toggleButton(this, event)">OFF</button>
+                </div>
+                
+                <!-- Face Recognition -->
+                <div class="feature" onclick="showInfo('Face Recognition', 'Identifies driver for personalized settings and monitors attention.')">
+                    <img src="assets/images/features/FR.jpeg" alt="FR">
+                    <p>Face Recognition</p>
+                    <div class="status green"></div>
+                    <button class="toggle-btn" id="feature6" data-state="off" onclick="toggleButton(this, event)">OFF</button>
+                </div>
+                
+                <!-- Driver Monitor -->
+                <div class="feature" onclick="showInfo('Driver Monitoring', 'Tracks driver alertness and warns against drowsiness or distraction.')">
+                    <img src="assets/images/features/DM.jpeg" alt="DM">
+                    <p>Driver Monitoring</p>
+                    <div class="status green"></div>
+                    <button class="toggle-btn" id="feature7" data-state="off" onclick="toggleButton(this, event)">OFF</button>
+                </div>
+                
+                <!-- Traffic Sign -->
+                <div class="feature" onclick="showInfo('Traffic Sign Recognition', 'Detects and displays traffic signs to assist the driver.')">
+                    <img src="assets/images/features/TSR.jpeg" alt="TSR">
+                    <p>Traffic Sign Recognition</p>
+                    <div class="status green"></div>
+                    <button class="toggle-btn" id="feature8" data-state="off" onclick="toggleButton(this, event)">OFF</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feature Info Modal -->
+        <div id="feature-info">
+            <div class="info-box">
+                <h3 id="feature-title"></h3>
+                <p id="feature-description"></p>
+                <button onclick="hideInfo()">Close</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Firebase & Custom JS -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDn6uUCP8zKV64f3Xwm0Ndodi9pq4teZ5o",
+            authDomain: "adasfeaturev2v.firebaseapp.com",
+            databaseURL: "https://adasfeaturev2v-default-rtdb.firebaseio.com",
+            projectId: "adasfeaturev2v",
+            storageBucket: "adasfeaturev2v.firebasestorage.app",
+            messagingSenderId: "883046654786",
+            appId: "1:883046654786:web:d6a236010398f079c69edb"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // DOM Elements
+        const sidebar = document.getElementById('sidebar');
+        const toggleAllBtn = document.getElementById('toggle-all-btn');
+        const featureInfo = document.getElementById('feature-info');
+        const featureTitle = document.getElementById('feature-title');
+        const featureDescription = document.getElementById('feature-description');
+
+        // Feature Info Functions
+        function showInfo(title, description) {
+            featureTitle.textContent = title;
+            featureDescription.textContent = description;
+            featureInfo.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideInfo() {
+            featureInfo.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toggle Individual Feature
+        function toggleButton(button, event) {
+            event.stopPropagation();
+            const currentState = button.getAttribute('data-state');
+            const newState = currentState === 'on' ? 'off' : 'on';
+            
+            button.setAttribute('data-state', newState);
+            button.textContent = newState.toUpperCase();
+            
+            // Update Firebase
+            const featureId = button.id;
+            const updates = {};
+            updates[featureId] = newState;
+            
+            database.ref('features').update(updates);
+        }
+
+        // Toggle All Features
+        function toggleAllFeatures() {
+            const currentState = toggleAllBtn.getAttribute('data-state');
+            const newState = currentState === 'on' ? 'off' : 'on';
+            
+            toggleAllBtn.setAttribute('data-state', newState);
+            toggleAllBtn.textContent = `Toggle All ${newState.toUpperCase()}`;
+            
+            const buttons = document.querySelectorAll('.toggle-btn');
+            buttons.forEach(button => {
+                button.setAttribute('data-state', newState);
+                button.textContent = newState.toUpperCase();
+                
+                // Update each feature in Firebase
+                const featureId = button.id;
+                database.ref(`features/${featureId}`).set(newState);
+            });
+        }
+
+        // Initialize from Firebase
+        function initializeFeatures() {
+            database.ref('features').on('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    Object.keys(data).forEach(featureId => {
+                        const button = document.getElementById(featureId);
+                        if (button) {
+                            const state = data[featureId];
+                            button.setAttribute('data-state', state);
+                            button.textContent = state.toUpperCase();
+                        }
+                    });
+                }
+            });
+        }
+
+        // Date & Time
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Time
+            const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+            document.getElementById('time').textContent = now.toLocaleTimeString('en-US', timeOptions);
+            
+            // Date
+            const dateOptions = { weekday: 'short', month: 'short', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeFeatures();
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            
+            // Set toggle all button event
+            toggleAllBtn.addEventListener('click', toggleAllFeatures);
+            
+            // Close modal when clicking outside
+            featureInfo.addEventListener('click', (e) => {
+                if (e.target === featureInfo) {
+                    hideInfo();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Vehicle Safety Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: white;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            border-bottom: 4px solid #008b77;
+        }
+
+        .header-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .header-icon-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-icon {
+            padding: 1rem;
+            background-color: white;
+            border-radius: 50%;
+            color: #008b77;
+            font-size: 3rem;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .header-title {
+                font-size: 3rem;
+            }
+        }
+
+        .header-subtitle {
+            font-size: 1.25rem;
+            color: #4b5563;
+            max-width: 48rem;
+            margin: 0 auto;
+            line-height: 1.75;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        /* Tabs Styles */
+        .tabs-container {
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+
+        .tabs-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            height: auto;
+            padding: 0.5rem;
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(44, 192, 162, 0.2), 0 4px 6px -2px rgba(44, 192, 162, 0.2);
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 3rem;
+            border: 2px solid rgba(44, 192, 162, 0.2);;
+            
+        }
+
+        @media (min-width: 768px) {
+            .tabs-list {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        .tab-trigger {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: none;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            font-family: inherit;
+            color: #6b7280;
+        }
+
+        .tab-trigger:hover {
+            background-color: #f3f4f6;
+        }
+
+        .tab-trigger.active {
+            background-color: #008b77;
+            color: white;
+        }
+
+        .tab-trigger i {
+            font-size: 1.5rem;
+        }
+
+        .tab-trigger span {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            margin-bottom: 2rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* System Header */
+        .system-header {
+            border-left: 4px solid #008b77;
+            border-radius: 1rem;
+        }
+
+        .system-header-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .system-icon {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .system-icon i {
+            font-size: 2rem;
+        }
+
+        .system-icon.fcw {
+            background-color: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .system-icon.eebl {
+            background-color: #fff7ed;
+            color: #ea580c;
+            border: 1px solid #fed7aa;
+        }
+
+        .system-icon.bsw {
+            background-color: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #bfdbfe;
+        }
+
+        .system-icon.dnpw {
+            background-color: #faf5ff;
+            color: #9333ea;
+            border: 1px solid #e9d5ff;
+        }
+
+        .system-icon.ima {
+            background-color: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+
+        .system-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .system-description {
+            font-size: 1.125rem;
+            color: #374151;
+            line-height: 1.75;
+        }
+
+        /* Example Scenario Card */
+        .scenario-card {
+            border-left: 4px solid #3b82f6;
+            background-color: #eff6ff;
+        }
+
+        .scenario-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .scenario-icon {
+            padding: 0.5rem;
+            background-color: #dbeafe;
+            border-radius: 0.5rem;
+            color: #2563eb;
+        }
+
+        .scenario-icon i {
+            font-size: 1.5rem;
+        }
+
+        .scenario-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .scenario-description {
+            color: #1e40af;
+        }
+
+        /* Additional Info Card */
+        .info-card {
+            background-color: #f9fafb;
+            border: 1px solid #d1d5db;
+        }
+
+        .info-text {
+            color: #374151;
+            font-weight: 500;
+        }
+
+        /* Formula Card */
+        .formula-card {
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .formula-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .formula-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .formula-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .formula-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .formula-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .formula-item h4 {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .formula-code {
+            background-color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+
+        /* Images Section - NEW STYLES */
+        .images-card {
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .images-container {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .images-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .image-section {
+            text-align: center;
+        }
+
+        .image-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f3f4f6;
+            border: 2px dashed #d1d5db;
+            border-radius: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .image-placeholder:hover {
+            border-color: #008b77;
+            background-color: #f0fdf4;
+        }
+
+        .image-placeholder i {
+            font-size: 3rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .image-placeholder:hover i {
+            color: #008b77;
+        }
+
+        .placeholder-text {
+            color: #6b7280;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .image-placeholder:hover .placeholder-text {
+            color: #008b77;
+        }
+
+        .image-caption {
+            font-size: 0.875rem;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Actual image styles when images are added */
+        .actual-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Key Components Card */
+        .components-card {
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .components-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .components-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .components-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .components-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .component-item {
+            background-color: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid #d1d5db;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        .component-item:hover {
+            border-color: #008b77;
+        }
+
+        .component-title {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .component-title i {
+            color: #008b77;
+            font-size: 1rem;
+        }
+
+        .component-description {
+            color: #4b5563;
+            font-size: 0.875rem;
+            line-height: 1.75;
+        }
+
+        /* About Section */
+        .about-section {
+            margin-top: 4rem;
+            background: linear-gradient(to right, #008b77, #006c5d);
+            color: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 3rem;
+        }
+
+        .about-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            line-height: 1.75;
+        }
+
+        .about-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: white;
+            color: #008b77;
+            margin-top: 5rem;
+        }
+
+        .footer-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+            }
+        }
+
+        .footer-info {
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-info {
+                margin-bottom: 0;
+            }
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-subtitle {
+            color: #008b77;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-button {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid #008b77;
+            color: #d1d5db;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            font-family: inherit;
+        }
+
+        .footer-button:hover {
+            background-color: white;
+        }
+
+        .footer-copyright {
+            border-top: 1px solid white;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: #008b77;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease-in-out;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background-color: #006c5d;
+        }
+
+        .scroll-to-top i {
+            font-size: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 767px) {
+            .header-container {
+                padding: 2rem 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .system-header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .system-title {
+                font-size: 1.5rem;
+            }
+
+            .card-content {
+                padding: 1.5rem;
+                box-shadow: 0 12px 24px rgba(252, 104, 207, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        .images-container {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 767px) {
+            .images-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .images-container {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 767px) {
+            .images-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .image-container {
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 0.75rem;
+            background-color: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+
+        .system-image {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            border-radius: 0.5rem;
+            border: 2px solid rgba(248, 100, 199, 0.2);
+            box-shadow: 0 12px 24px rgba(252, 104, 207, 0.15), 0 4px 8px rgba(250, 15, 191, 0.1);
+        }
+
+        .system-image:hover {
+            transform: scale(1.02);
+        }
+        .home-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #008b77;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.home-button:hover {
+    background-color: #006c5d;
+}
+
+.header-container {
+    position: relative; /* لضمان أن الزر يتموضع بشكل صحيح */
+}
+.scenario-image-container {
+            flex: 0 0 350px;
+            text-align: center;
+        }
+
+        .scenario-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            border: 2px solid rgba(251, 15, 247, 0.2);
+          
+            transition: all 0.3s ease-in-out;
+        }
+
+        
+
+        @media (max-width: 767px) {
+            .scenario-content {
+                flex-direction: column;
+            }
+            
+            .scenario-image-container {
+                flex: none;
+                width: 100%;
+            }
+        }
+        .scenario-image-container {
+            flex: 0 0 280px;
+            text-align: center;
+        }
+
+        .scenario-image {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 0.75rem;
+            border: 2px solid rgba(248, 100, 199, 0.2);
+            box-shadow: 0 12px 24px rgba(252, 104, 207, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            background-color: #f8fafc;
+        }
+
+        
+
+        @media (max-width: 767px) {
+            .scenario-content {
+                flex-direction: column;
+            }
+            
+            .scenario-image-container {
+                flex: none;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .scenario-image {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="home-button">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <div class="header-content">
+                <div class="header-icon-container">
+                    <div class="header-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+                <h1 class="header-title">Advanced Vehicle Safety Systems</h1>
+                <p class="header-subtitle">
+                    Comprehensive overview of modern vehicle safety technologies designed to prevent collisions and
+                    enhance driver awareness
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Tabs Navigation -->
+        <div class="tabs-container">
+            <div class="tabs-list">
+                <button class="tab-trigger active" data-tab="fcw">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>FCW</span>
+                </button>
+                <button class="tab-trigger" data-tab="eebl">
+                    <i class="fas fa-bolt"></i>
+                    <span>EEBL</span>
+                </button>
+                <button class="tab-trigger" data-tab="bsw">
+                    <i class="fas fa-eye"></i>
+                    <span>BSW</span>
+                </button>
+                <button class="tab-trigger" data-tab="dnpw">
+                    <i class="fas fa-route"></i>
+                    <span>DNPW</span>
+                </button>
+                <!-- استبدل هذا الجزء في tab trigger الخاص بـ IMA -->
+                <button class="tab-trigger" data-tab="ima">
+                    <i class="fas fa-traffic-light"></i>
+                    <span>IMA</span>
+                </button>
+            </div>
+
+            <!-- FCW Content -->
+            <div class="tab-content active" id="fcw">
+                <!-- System Header -->
+                <div class="content-section">
+                    <div class="card system-header">
+                        <div class="card-content">
+                            <div class="system-header-content">
+                                <div class="system-icon fcw">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div>
+                                    <h2 class="system-title">Forward Collision Warning</h2>
+                                    <p class="system-description">FCW warns the driver of an impending collision between
+                                        the Host Vehicle (HV) front-end and a Remote Vehicle (RV) rear-end. This
+                                        collision is possible only if both the HV and RV are driving in the same
+                                        direction and are in the same lane (RV could be stopped, decelerating, or moving
+                                        at a speed slower than the HV).
+
+                                        The output of Target Classification (TC) Module is used to determine if RV is in
+                                        the same lane as the HV. TC also provides the longitudinal offset which is used
+                                        along with vehicle dynamics information to determine if there is a possibility
+                                        of forward collision.
+
+                                        The simplest way to predict forward-collision is to compute the
+                                        time-to-collision (TTC) and compare that with a calibrated threshold value.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Scenario -->
+                <div class="content-section">
+                    <div class="card scenario-card">
+                        <div class="card-content">
+                            <div class="scenario-content">
+                                <div class="scenario-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div>
+                                    <h3 class="scenario-title">Example Scenario</h3>
+                                    <p class="scenario-description">A vehicle ahead in the same lane is moving slower
+                                        than your vehicle or has suddenly decelerated, creating a risk of collision. The
+                                        FCW system detects this situation and alerts the driver to take action.</p>
+                                </div>
+                                <div class="scenario-image-container">
+                                    <img src="fcw2 - Copy.jpg" alt="IMA Scenario - Intersection collision warning" class="scenario-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Use Case and Flowchart Images -->
+                <div class="content-section">
+                    <div class="card images-card">
+                        <div class="card-content">
+                            <div class="images-container">
+                                <!-- Use Case Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Use Case Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="fcw usecase.jpg" alt="Use Case Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption">FCW Use Case Diagram</p>
+                                </div>
+
+                                <!-- Flowchart Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Flowchart Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="fcw flowchat.jpg" alt="Flowchart Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption">FCW Flowchart Diagram</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Components -->
+                <div class="content-section">
+                    <div class="card components-card">
+                        <div class="card-content">
+                            <h3 class="components-title">Key Components of FCW</h3>
+                            <div class="components-grid">
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Target Classification
+                                    </h4>
+                                    <p class="component-description">Determines if the remote vehicle is in the same
+                                        lane as the host vehicle</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Time-to-Collision (TTC)
+                                    </h4>
+                                    <p class="component-description">Calculates the time remaining before a potential
+                                        collision occurs</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Warning Threshold
+                                    </h4>
+                                    <p class="component-description">Calibrated value that determines when to alert the
+                                        driver based on TTC</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EEBL Content -->
+            <div class="tab-content" id="eebl">
+                <!-- System Header -->
+                <div class="content-section">
+                    <div class="card system-header">
+                        <div class="card-content">
+                            <div class="system-header-content">
+                                <div class="system-icon eebl">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div>
+                                    <h2 class="system-title">Electronic Emergency Brake Light</h2>
+                                    <p class="system-description">EEBL addresses the scenario where a Remote Vehicle is
+                                         ahead left or ahead right and in the same direction. If there are other vehicles between
+                                        HV and RV considered, and the RV brakes hard, a potential crash is imminent if
+                                        no brake light is visible on the vehicle in front of HV.
+
+                                        EEBL can issue a warning to the driver of HV in such scenarios where the RV is
+                                        not directly visible to the HV and thus can help avoid the crash. Once we
+                                        establish that the RV is ahead in the same lane as the HV and it is driving in
+                                        the same direction, RV acceleration information from the BSM can be used to
+                                        determine if the RV has braked hard.
+
+                                        EEBL warning is issued if the RV acceleration value is less than a calibrated
+                                        deceleration threshold value. HV can either find this out from the acceleration
+                                        value transmitted as a part of the DF_BSMcoreDataData Frame or from the
+                                        eventHardBraking event flag transmitted as a part of
+                                        DF_VehicleSafetyExtensionsData Frame.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Scenario -->
+                <div class="content-section">
+                    <div class="card scenario-card">
+                        <div class="card-content">
+                            <div class="scenario-content">
+                                <div class="scenario-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div>
+                                    <h3 class="scenario-title">Example Scenario</h3>
+                                    <p class="scenario-description">A vehicle several cars ahead brakes suddenly, but
+                                        you cannot see its brake lights due to vehicles in between. The EEBL system
+                                        receives the braking information wirelessly and alerts you to the potential
+                                        hazard ahead</p>
+                                </div>
+                                <div class="scenario-image-container">
+                                    <img src="eebl2 - Copy.jpg" alt="IMA Scenario - Intersection collision warning" class="scenario-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="content-section">
+                    <div class="card info-card">
+                        <div class="card-content">
+                            <p class="info-text">SAE J2735 suggests that the minimum acceleration threshold of the RV to
+                                trigger EEBL warning be −0.4 g (−3.92 m/s²).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Use Case and Flowchart Images -->
+                <!-- Use Case and Flowchart Images -->
+                <div class="content-section">
+                    <div class="card images-card">
+                        <div class="card-content">
+                            <div class="images-container">
+                                <!-- Use Case Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Use Case Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="eebl usecase.jpg" alt="Use Case Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption">EEBL Use Case Diagram</p>
+                                </div>
+
+                                <!-- Flowchart Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Flowchart Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="eebl flowchart.jpg" alt="Flowchart Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption">EEBL Flowchart Diagram</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Components -->
+                <div class="content-section">
+                    <div class="card components-card">
+                        <div class="card-content">
+                            <h3 class="components-title">Key Components of EEBL</h3>
+                            <div class="components-grid">
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Basic Safety Message (BSM)
+                                    </h4>
+                                    <p class="component-description">Wireless message containing vehicle dynamics
+                                        information including acceleration</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Deceleration Threshold
+                                    </h4>
+                                    <p class="component-description">Calibrated value (−0.4 g or −3.92 m/s²) that
+                                        determines hard braking</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Vehicle Safety Extensions
+                                    </h4>
+                                    <p class="component-description">Additional data frame that can include the
+                                        eventHardBraking flag</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BSW Content -->
+            <div class="tab-content" id="bsw">
+                <!-- System Header -->
+                <div class="content-section">
+                    <div class="card system-header">
+                        <div class="card-content">
+                            <div class="system-header-content">
+                                <div class="system-icon bsw">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div>
+                                    <h2 class="system-title">Blind-Spot Warning</h2>
+                                    <p class="system-description">BSW safety application either provides an advisory
+                                        alert or warns the driver of HV if another vehicle occupies the adjacent lane in
+                                        Host Vehicle's Blind-Spot. The application arbitrates one versus the other
+                                        depending on the driver's intent to change the lane to the one occupied by
+                                        another vehicle.
+
+                                        A driver shows the intention to change the lane by activating a turn signal with
+                                        information which can be pulled into the system from the Vehicle CAN Bus.
+
+                                        The time-to-collision (TTC) decreases with increasing HV speed and RV-to-HV
+                                        relative speed. To compensate for this decrease in TTC, BSW Zone length can be
+                                        increased with increasing HV speed and the relative speed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Scenario -->
+                <div class="content-section">
+                    <div class="card scenario-card">
+                        <div class="card-content">
+                            <div class="scenario-content">
+                                <div class="scenario-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div>
+                                    <h3 class="scenario-title">Example Scenario</h3>
+                                    <p class="scenario-description">You activate your turn signal to change lanes, but
+                                        there is a vehicle in your blind spot. The BSW system detects this vehicle and
+                                        provides a warning to prevent a potential collision during the lane change</p>
+                                </div>
+                                <div class="scenario-image-container">
+                                    <img src="bswsn.jpg" alt="IMA Scenario - Intersection collision warning" class="scenario-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Use Case and Flowchart Images -->
+                <!-- Use Case and Flowchart Images -->
+                <!-- Use Case and Flowchart Images -->
+                <div class="content-section">
+                    <div class="card images-card">
+                        <div class="card-content">
+                            <div class="images-container">
+                                <!-- Use Case Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Use Case Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="bsw usecase.jpg" alt="Use Case Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption">BSW Use Case Diagram</p>
+                                </div>
+
+                                <!-- Flowchart Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Flowchart Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="bsw flowchart.jpg" alt="Flowchart Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption"> BSW Flowchart Diagram</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Components -->
+                <div class="content-section">
+                    <div class="card components-card">
+                        <div class="card-content">
+                            <h3 class="components-title">Key Components of BSW</h3>
+                            <div class="components-grid">
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Turn Signal Detection
+                                    </h4>
+                                    <p class="component-description">Monitors driver's intention to change lanes through
+                                        turn signal activation</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Dynamic BSW Zone
+                                    </h4>
+                                    <p class="component-description">Zone length that adjusts based on vehicle speed and
+                                        relative speed</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Advisory vs. Warning Alerts
+                                    </h4>
+                                    <p class="component-description">Different alert levels based on the presence of
+                                        vehicles and driver's intent</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DNPW Content -->
+            <div class="tab-content" id="dnpw">
+                <!-- System Header -->
+                <div class="content-section">
+                    <div class="card system-header">
+                        <div class="card-content">
+                            <div class="system-header-content">
+                                <div class="system-icon dnpw">
+                                    <i class="fas fa-route"></i>
+                                </div>
+                                <div>
+                                    <h2 class="system-title">Do Not Pass Warning</h2>
+                                    <p class="system-description">DNPW is intended to warn the driver of HV during a
+                                        passing maneuver attempt when a slower-moving vehicle ahead cannot be passed
+                                        safely using a passing zone, because the passing zone is occupied by vehicles
+                                        moving in the opposite direction.
+
+                                        This module can either provide advisory information or a warning based on the
+                                        driver's intent to overtake. The arbitration can be done by observing the
+                                        left-turn activation signal over vehicle CAN.
+
+                                        DNPW is applicable only for the Remote Vehicles driving in the reverse direction
+                                        relative to HV in a lane that is classified as ahead left of the HV. DNPW Zone
+                                        length can be thought of as the addition of three different distances:
+                                        Acceleration Distance, Overtaking Distance, and Return Distance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Scenario -->
+                <div class="content-section">
+                    <div class="card scenario-card">
+                        <div class="card-content">
+                            <div class="scenario-content">
+                                <div class="scenario-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div>
+                                    <h3 class="scenario-title">Example Scenario</h3>
+                                    <p class="scenario-description">You are attempting to pass a slower vehicle ahead,
+                                        but there is oncoming traffic in the passing lane. The DNPW system detects this
+                                        situation and warns you that it is unsafe to attempt the passing maneuver.</p>
+                                </div>
+                                <div class="scenario-image-container">
+                                    <img src="dnpw2.jpg" alt="IMA Scenario - Intersection collision warning" class="scenario-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulas -->
+                <div class="content-section">
+                    <div class="card formula-card">
+                        <div class="card-content">
+                            <h3 class="formula-title">DNPW Distance Calculations</h3>
+                            <div class="formula-grid">
+                                <div class="formula-item">
+                                    <h4>Acceleration Distance</h4>
+                                    <div class="formula-code">AccelerationDistance = (HVSpeed × AccelTime) + (0.5 ×
+                                        HVLongitudinalAccel × AccelTime²)</div>
+                                </div>
+                                <div class="formula-item">
+                                    <h4>Overtaking Distance</h4>
+                                    <div class="formula-code">OvertakingDistance = (HVSpeed + ΔSpeed) × OvertakingTime
+                                    </div>
+                                </div>
+                                <div class="formula-item">
+                                    <h4>Return Distance</h4>
+                                    <div class="formula-code">ReturnDistance = (HVSpeed + ΔSpeed) × ReturnTime</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Use Case and Flowchart Images -->
+                <!-- Use Case and Flowchart Images -->
+                <div class="content-section">
+                    <div class="card images-card">
+                        <div class="card-content">
+                            <div class="images-container">
+                                <!-- Use Case Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Use Case Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="dnpw usecase.jpg" alt="Use Case Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption">dnpw Use Case Diagram</p>
+                                </div>
+
+                                <!-- Flowchart Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Flowchart Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="dnpw flowchart.jpg" alt="Flowchart Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption">dnpw Flowchart Diagram</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Components -->
+                <div class="content-section">
+                    <div class="card components-card">
+                        <div class="card-content">
+                            <h3 class="components-title">Key Components of DNPW</h3>
+                            <div class="components-grid">
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        DNPW Zone Length
+                                    </h4>
+                                    <p class="component-description">Combined distance needed for acceleration,
+                                        overtaking, and returning to the original lane</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Oncoming Traffic Detection
+                                    </h4>
+                                    <p class="component-description">Identifies vehicles traveling in the opposite
+                                        direction in the passing lane</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Longitudinal Offset
+                                    </h4>
+                                    <p class="component-description">Distance between the host vehicle and remote
+                                        vehicle used in safety calculations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IMA Content -->
+            <div class="tab-content" id="ima">
+                <!-- System Header -->
+                <div class="content-section">
+                    <div class="card system-header">
+                        <div class="card-content">
+                            <div class="system-header-content">
+                                <div class="system-icon ima">
+                                    <i class="fas fa-traffic-light"></i>
+                                </div>
+                                <div>
+                                    <h2 class="system-title">Intersection Movement Assist</h2>
+                                    <p class="system-description">IMA safety application is intended to warn the driver
+                                        of HV if it is not safe for the HV to enter an intersection due to high
+                                        possibility of collision with other RVs.
+
+                                        This application estimates the time taken by the HV and RV to arrive at the
+                                        intersection point and issue a warning if both vehicles are predicted to arrive
+                                        at approximately the same time.
+
+                                        This module can issue either "IMA Right" or "IMA Left" warning-based vehicle
+                                        position, speed, heading information. Target Classification Zone and Direction
+                                        outputs are used to determine if a Remote Vehicle is in either IMA Right or IMA
+                                        Left Zone</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Scenario -->
+                <div class="content-section">
+                    <div class="card scenario-card">
+                        <div class="card-content">
+                            <div class="scenario-content">
+                                <div class="scenario-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div>
+                                    <h3 class="scenario-title">Example Scenario</h3>
+                                    <p class="scenario-description">
+                                        Two vehicles, hv (host vehicle) and rv (remote vehicle), are approaching an intersection on a curved road with limited visibility due to road geometry.
+                                        The IMA system uses V2V communication to detect that both vehicles are on a collision path.
+                                        The system alerts the drivers in real time and may apply automatic braking or steering assistance to avoid the crash.
+                                        
+                                        </p>
+                                </div>
+                                <div class="scenario-image-container">
+                                    <img src="ima2 - Copy.jpg" alt="IMA Scenario - Intersection collision warning" class="scenario-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulas -->
+                <div class="content-section">
+                    <div class="card formula-card">
+                        <div class="card-content">
+                            <h3 class="formula-title">IMA Distance Calculations</h3>
+                            <div class="formula-grid">
+                                <div class="formula-item">
+                                    <h4>Host Vehicle to Intersection Distance</h4>
+                                    <div class="formula-code">hv_to_intersection_dist = lon_offset + (lat_offset /
+                                        tan(Δθ))</div>
+                                </div>
+                                <div class="formula-item">
+                                    <h4>Remote Vehicle to Intersection Distance</h4>
+                                    <div class="formula-code">rv_to_intersection_dist = lat_offset / sin(Δθ)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Use Case and Flowchart Images -->
+                <!-- Use Case and Flowchart Images -->
+                <!-- Use Case and Flowchart Images -->
+                <div class="content-section">
+                    <div class="card images-card">
+                        <div class="card-content">
+                            <div class="images-container">
+                                <!-- Use Case Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Use Case Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="ima usecase.jpg" alt="Use Case Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption">IMA Use Case Diagram</p>
+                                </div>
+
+                                <!-- Flowchart Image -->
+                                <div class="image-section">
+                                    <h3 class="image-title">Flowchart Diagram</h3>
+                                    <div class="image-container">
+                                        <img src="ima flowchart.jpg" alt="Flowchart Diagram" class="system-image">
+                                    </div>
+                                    <p class="image-caption">IMA Flowchart Diagram</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Components -->
+                <div class="content-section">
+                    <div class="card components-card">
+                        <div class="card-content">
+                            <h3 class="components-title">Key Components of IMA</h3>
+                            <div class="components-grid">
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Time-to-Intersection
+                                    </h4>
+                                    <p class="component-description">Calculated time for both vehicles to reach the
+                                        intersection point</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        IMA Left/Right Zones
+                                    </h4>
+                                    <p class="component-description">Different warning zones based on the direction of
+                                        the approaching vehicle</p>
+                                </div>
+                                <div class="component-item">
+                                    <h4 class="component-title">
+                                        <i class="fas fa-arrow-right"></i>
+                                        Tolerance Value
+                                    </h4>
+                                    <p class="component-description">Calibrated threshold for determining when two
+                                        vehicles might arrive simultaneously</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="card about-section">
+            <div class="about-content">
+                <h2 class="about-title">About Vehicle Safety Systems</h2>
+                <p class="about-text">
+                    Modern vehicles are equipped with advanced safety systems that use sensors, cameras, and wireless
+                    communication to detect potential hazards and alert drivers to take action. These systems work
+                    together to create a comprehensive safety network that can significantly reduce the risk of
+                    accidents.
+                </p>
+                <p class="about-text">
+                    The safety applications described in this document are part of the Vehicle-to-Vehicle (V2V) and
+                    Vehicle-to-Infrastructure (V2I) communication systems that enable vehicles to share critical safety
+                    and operational data with each other and with roadway infrastructure.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+
+
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; <span id="current-year"></span> Vehicle Safety Systems. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set current year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Tab functionality
+            const tabTriggers = document.querySelectorAll('.tab-trigger');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    // Remove active class from all triggers and contents
+                    tabTriggers.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked trigger and corresponding content
+                    trigger.classList.add('active');
+                    const tabId = trigger.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Scroll to top functionality
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            let showScrollTop = false;
+
+            function updateScrollTopButton() {
+                const shouldShow = window.pageYOffset > 300;
+                if (shouldShow !== showScrollTop) {
+                    showScrollTop = shouldShow;
+                    if (showScrollTop) {
+                        scrollToTopBtn.classList.add('show');
+                    } else {
+                        scrollToTopBtn.classList.remove('show');
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', updateScrollTopButton);
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Initial check for scroll position
+            updateScrollTopButton();
+
+            // Image placeholder click functionality (optional)
+            const imagePlaceholders = document.querySelectorAll('.image-placeholder');
+            imagePlaceholders.forEach(placeholder => {
+                placeholder.addEventListener('click', function () {
+                    // You can add functionality here to open file picker or image upload
+                    console.log('Image placeholder clicked - you can add image upload functionality here');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

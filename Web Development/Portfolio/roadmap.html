@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #008b77;
+            --secondary-color: #00b4a0;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .road-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .road-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(0, 180, 160, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .road-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards 0.3s;
+        }
+
+        .road-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .road-description {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* تأثيرات عند hover */
+        .road-title:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        .road-title:hover::after {
+            width: 80px;
+            transition: width 0.3s ease;
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .road-section {
+                padding: 40px 20px;
+            }
+            
+            .road-title {
+                font-size: 2rem;
+            }
+            
+            .road-description {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .road-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="road-section" id="roadmap">
+        <h2 class="road-title">Tech Explorer: Your Journey Starts Here</h2>
+        <p class="road-description">
+            Welcome to your roadmap through the world of technology! From embedded systems to web development and AI
+            — your journey starts here.
+        </p>
+    </section>
+
+    <script>
+        // إضافة تأثير عند التمرير
+        document.addEventListener('DOMContentLoaded', function() {
+            const roadSection = document.querySelector('.road-section');
+            
+            function checkScroll() {
+                const sectionTop = roadSection.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.8) {
+                    roadSection.classList.add('animated');
+                }
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // تحقق مرة أولى عند التحميل
+        });
+    </script>
+</body>
+</html>

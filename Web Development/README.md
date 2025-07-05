@@ -34,7 +34,7 @@ System configuration and performance monitoring:
 - **🚗 Vehicle Information:** Model details, serial number, operating hours, service history
 - **📞 Customer Support:** Emergency support, live chat, and email assistance
 ![DFR Authorized](./images/Setting%20page%201.png) </br>
-![DFR Authorized](./images/Setting%20page%202.png) </br>
+![DFR Authorized](./images/Setting%20Page%202.png) </br>
 
 ### 4. **Authentication & Security (login.html)**
 Secure user authentication system:

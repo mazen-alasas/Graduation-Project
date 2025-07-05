@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 18
+names: ['20 speed limit', 'Attention please', 'Beware of children', 'Cycle road ahead', 'Dangerous right curve ahead', 'Give way', 'Keep right', 'Left zig zag traffic', 'No entry', 'No over taking', 'No speed limit', 'Road narrows to right', 'Round about', 'Stop', 'Straight ahead only', 'Turn left ahead', 'Uneven Road', 'pedestrian crossing']
+
+roboflow:
+  workspace: final-project-mdtzo
+  project: tsr-subdata
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/final-project-mdtzo/tsr-subdata/dataset/2

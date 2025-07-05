@@ -113,6 +113,10 @@ We dedicated a section to each major track in the project:
 ### 🧑‍🤝‍🧑 Team Collaboration
 This project reflects strong coordination between different team members working on multiple tracks. The website was built to tie everything together—from reading sensor values, to recognizing faces, to displaying alerts and controlling feature states.
 
+### Portfolio Link:
+![DFR Authorized](./images/Picture1.png) </br>
+- **link: https://codeben-a1dd2.web.app
+
 ### 🌟 Final Notes
 We wanted this portfolio to:
 

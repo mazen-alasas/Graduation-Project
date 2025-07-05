@@ -21,6 +21,7 @@ typedef double          f64;
 #define  Min_s8  -128
 
 #define  Nullptr ((void*)0)
+#define  NULL     0
 
 typedef enum
 {

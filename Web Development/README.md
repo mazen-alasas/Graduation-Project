@@ -42,7 +42,7 @@ Secure user authentication system:
 - **🔐 Firebase Authentication:** Secure login with email/password
 - **🛡️ Session Management:** Encrypted session handling
 - **🔒 Security Features:** Data encryption and suspicious activity monitoring
-![DFR Authorized](./images/dfr.jpg) </br>
+![DFR Authorized](./images/Sign%20In%20Page.png) </br>
 
 ---
 

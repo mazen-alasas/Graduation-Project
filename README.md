@@ -27,7 +27,7 @@ An intelligent, real-time system developed for electric vehicles to enhance road
     <td align="center">
       <a href="https://github.com/mazen-alasas">
         <img src="https://avatars.githubusercontent.com/mazen-alasas" width="100" style="border-radius: 50%"><br>
-        <sub><a href="https://www.linkedin.com/in/mazen-ahmed-alasas-772831244/">Mazen Alasas</a></sub>
+        <sub><a href="https://www.linkedin.com/in/mazen-alasas/">Mazen Alasas</a></sub>
       </a>
     </td>
     <td align="center">
